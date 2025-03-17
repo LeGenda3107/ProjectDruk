@@ -11,3 +11,27 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
+
+<header class="header">
+    <div class="container">
+        <div class="headerMenu">
+          <nav class="nav">
+            <a href=""></a>
+            <a href=""></a>
+            <a href=""></a>
+          </nav>  
+        </div>
+
+        <div class="mainInfo">
+          <div class="headerTitle">Втілимо вашу мрію у реальність</div>
+          <div class="headerSubtitle">Наша команда виходить у світ із новим проєктом - дистанційне замовлення на друк власних 3-д моделей</div>
+          <div class="mainButton">Більше...</div>
+        </div>
+
+        <div class="circle">
+        <img src="">
+        </div>
+
+        <div class="drugdiller"></div>
+    </div>
+</header>
