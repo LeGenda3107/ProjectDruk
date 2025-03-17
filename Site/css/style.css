@@ -1,0 +1,36 @@
+:root {
+	--main-bg-color: rgba(27, 22, 27, 1);
+	--text-color: rgba(88, 88, 88, 1);
+	--accent-color: white;
+}
+
+body {
+	background-color: var(--main-bg-color);
+	display: flex;
+	justify-content: center;
+}
+
+.container {
+	width: 90vw;
+}
+.leftPanel {
+	max-width: 300px; 
+	width: 30%;
+	float: left;
+}
+.rightPanel {
+	width: 70%;
+	float: left;
+}
+.row {
+	display: flex;
+	align-items: center;
+}
+
+p {
+	color: var(--text-color);
+}
+
+h1, h3{
+	color: var(--accent-color);
+}
