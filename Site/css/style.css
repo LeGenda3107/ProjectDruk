@@ -1,17 +1,29 @@
 :root {
-	--main-bg-color: rgba(27, 22, 27, 1);
-	--text-color: rgba(88, 88, 88, 1);
+	--main-bg-color: rgba(35, 19, 55, 1);
+	--text-color: rgba(243, 244, 245, 1);
+	--button-bg-color: rgba(91, 46, 127, 1);
 	--accent-color: white;
+	--grayBlock-color: rgba(18, 18, 18, 1);
 }
 
 body {
 	background-color: var(--main-bg-color);
+	color: var(--text-color);
+	font-family: 'Montserrat';
 	display: flex;
 	justify-content: center;
 }
 
-.container {
-	width: 90vw;
+.container{
+    width: 1440px;
+    margin: 0 auto;
+    padding: 0 10px;
+    
+}
+.header{
+	display: flex;
+	flex-direction: column;
+	align-items: center	;
 }
 .leftPanel {
 	max-width: 300px; 
@@ -34,3 +46,86 @@ p {
 h1, h3{
 	color: var(--accent-color);
 }
+
+nav{
+	padding: 16px 0;
+	display: flex;
+	justify-content: space-between;
+	width: 1040px;
+	height: 70px;
+	font-size: 28px;
+}
+a{
+	text-align: center;
+	padding: 20px 0px;
+	width: 276px;
+	color: var(--text-color);
+	text-decoration: none;
+	background-color: var(--button-bg-color);
+	border-radius: 16px;
+}
+.logo{
+	width: 80px;
+	height: 70px;
+	background-color: var(--button-bg-color);
+	border-radius: 16px;
+}
+.mainInfo{
+
+	display: flex;
+	justify-content: space-between;
+}
+.headerTitle{
+	margin-top: 250px;
+	font-size: 48px;
+	width: 630px;
+	color: var(--text-color);
+	font-weight: bold;
+}
+.headerSubtitle{
+	margin-top: 70px;
+	font-size: 36px;
+	width: 600px;
+}
+.mainButton{
+	margin-top: 45px;
+	margin-left: 30px;
+	font-size: 28px;
+	width: 290px;
+	height: 30px;
+	font-weight: bold;
+	background-color: var(--button-bg-color);
+	border-radius: 16px;
+	text-align: center;
+	padding: 20px 0;
+
+}
+.circle{
+	background-color: var(--button-bg-color);
+	width: 720px;
+	height: 720px;
+	border-radius: 50%;
+	position: relative;
+
+	display: flex;
+	justify-content: space-around;
+}
+.drugdiller{
+	margin-top: 50px;
+	margin-left: 110px;
+	width: 1200px;
+	height: 90px;
+	border-radius: 32px;
+	background-color: var(--button-bg-color);
+	
+}
+.secondScreen{
+	background-color: var(--main-bg-color);
+}
+.grayBlock{
+	width: 1200px;
+	height: 1080px;
+	margin-left: 110px;
+	background-color: var(--grayBlock-color);
+}
+

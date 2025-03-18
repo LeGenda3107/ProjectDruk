@@ -42,17 +42,26 @@
 
 <section class="gallery">
     <div class="container">
-      
+      <div class="grayBlock">
             <div class="title">Ось що у нас вже є</div>
             <div class="usb"></div>
             <div class="catalogButton">Каталог</div>
+</div>
     </div>
 </section>
 <section class="moreInfoScreen">
+    <div class="container">
+        <div class="grayBlock">
     <div class="left-sideImage"><img src=""></div>
     <div class="infoTitle"></div>
     <div class="infoText"></div>
     <div class="infoText"></div>
     <div class="megaButton">Штопаєм ділдака!</div>
 <div class="right-sideImage"><img src=""></div>
+</div>
+</div>
 </section>
+<?php
+    $title = "catalog";
+    include '../blocks/header.php';
+?>
