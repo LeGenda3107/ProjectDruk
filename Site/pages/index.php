@@ -1,7 +1,35 @@
 <?php
-    $title = "catalog";
+    $title = "index";
     include '../blocks/header.php';
 ?>
+<header class="header">
+    <div class="container">
+        <div class="headerMenu">
+          <nav class="nav">
+            <div class="logo"><img src=""></div>
+            <a href="">Contora name</a>
+            <a href="">Bla bla bla</a>  
+            <a href="">Ble ble ble</a>
+          </nav>  
+        </div>
+
+        <div class="mainInfo">
+          <div>
+            <div class="headerTitle">Втілимо вашу мрію у реальність</div>
+            <div class="headerSubtitle">Наша команда виходить у світ із новим проєктом - дистанційне замовлення на друк власних 3-д моделей</div>
+            <div class="mainButton">Більше...</div>
+          </div>
+        
+        <div class="circle">
+          <img src="">
+        </div>
+      
+    
+        </div>
+ <div class="drugdiller"></div>   
+    </div>
+     
+</header>
 <section class="secondScreen">
     <div class="container">
         <div class="grayBlock">
@@ -61,6 +89,18 @@
 </div>
 </div>
 </section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="socialMedia">Social media</div>
+    <div class="socialMediaIcons">
+      <img src="">
+      <img src="">
+      <img src="">
+      <img src="">
+    </div>
+  </div>
+</footer>
 <?php
     $title = "catalog";
     include '../blocks/header.php';
