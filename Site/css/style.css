@@ -1,13 +1,33 @@
 :root {
-	--main-bg-color: rgba(27, 22, 27, 1);
-	--text-color: rgba(88, 88, 88, 1);
+	--main-bg-color: rgba(35, 19, 55, 1);
+	--text-color: white;
 	--accent-color: white;
+	--second-color: rgba(91, 46, 127, 1);
 }
-
+html {
+	font-family: "Montserrat", sans-serif;
+}
 body {
 	background-color: var(--main-bg-color);
 	display: flex;
 	justify-content: center;
+}
+
+p {
+	color: var(--text-color);
+	font-size: 14px;
+}
+
+h1, h3{
+	color: var(--text-color);
+}
+h1 {
+	font-size: 48px;
+	font-weight: 800;
+}
+h3 {
+	font-size: 14px;
+	font-weight: 800;
 }
 
 .container {
@@ -17,20 +37,193 @@ body {
 	max-width: 300px; 
 	width: 30%;
 	float: left;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	gap: 20px;
 }
 .rightPanel {
-	width: 70%;
+	width: 80%;
 	float: left;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 20px;
+	justify-content: flex-start;
+	grid-gap: 30px;
 }
+
 .row {
 	display: flex;
 	align-items: center;
+	gap: 10px;
 }
 
-p {
-	color: var(--text-color);
+.parameters {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+.parameters-content{
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
 }
 
-h1, h3{
-	color: var(--accent-color);
+input[type="number"] {
+  -moz-appearance: textfield;
 }
+
+.inputCatalog {
+ 	font-size: .8vw;
+	width: 70px;
+	height: 25px;
+	background-color: var(--text-color);
+	box-shadow: 0 0 .4vw rgba(0,0,0,0.5), 0 0 0 .15vw transparent;
+	border-radius: 0.4vw;
+	border: none;
+	outline: none;
+	padding: 0.4vw;
+	max-width: 190px;
+	transition: .4s;
+}
+
+.inputCatalog:hover {
+	box-shadow: 0 0 0 .15vw var(--second-color);
+}
+
+.inputCatalog:focus {
+	box-shadow: 0 0 0 .15vw var(--second-color);
+}
+.input[type="checkbox"] {	
+	display: none;
+}
+
+  /* Style for the custom checkbox */
+.custom-checkbox {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	border: 2px solid var(--text-color);
+	border-radius: 4px;
+	position: relative;
+	cursor: pointer;
+}
+
+/* Style for the custom checkmark */
+.custom-checkbox::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 10px;
+	height: 10px;
+	background-color: var(--text-color);
+	border-radius: 2px;
+	opacity: 0;
+}
+
+/* Show the checkmark when checkbox is checked */
+.input[type="checkbox"]:checked + .custom-checkbox::after {
+	opacity: 1;
+}
+
+.toggle-button {
+  cursor: pointer;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.toggle-button::after {
+  content: "▼";
+  transition: transform 0.3s ease;
+}
+
+.toggle-button.open::after {
+  transform: rotate(180deg);
+}
+
+.parameters-content {
+  overflow: hidden;
+  height: 0;
+  transition: height 0.3s ease;
+}
+
+
+/* картки з товарами */
+
+.card {
+  width: 195px;
+  height: 285px;
+  background: var(--second-color);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: 0.2s ease-in-out;
+  font-size: 2em;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.card img {
+  height: 100%;
+  position: absolute;
+  transition: 0.2s ease-in-out;
+  z-index: 1;
+}
+
+.card:hover > img {
+  height: 95%;
+  filter: blur(3px);
+  animation: anim 3s infinite;
+}
+
+/*.card:hover::before {
+  	transform: scale(7) translate(-20px);
+}*/
+
+.card:hover {
+  	box-shadow: 1px 1px 5px 5px #9fe4e44a;
+}
+.textBox {
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  transition: 0.2s ease-in-out;
+  z-index: 2;
+}
+
+.textBox > .text {
+  font-weight: bold;
+}
+
+.textBox > .head {
+  font-size: 20px;
+}
+
+.textBox > .price {
+  font-size: 17px;
+}
+
+.textBox > span {
+  font-size: 12px;
+  color: lightgrey;
+}
+
+.card:hover > .textBox {
+  opacity: 1;
+}
+
+.card:hover {
+  transform: scale(1.04);
+}
+
