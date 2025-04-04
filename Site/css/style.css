@@ -17,13 +17,11 @@ body {
 	align-items: center;
 }
 html {
-	overflow-x: hidden;
 	font-family: "Montserrat", sans-serif;
 }
 
 .container {
 	width: 90vw;
-	display: flex;
 }
 
 div.container {
@@ -60,15 +58,10 @@ a{
 p {
 	color: var(--text-color);
 	font-size: 14px;
-	font-weight: bold;
 }
 
 h1 {
 	font-size: 48px;
-	font-weight: 800;
-}
-h2 {
-	font-size: 32px;
 	font-weight: 800;
 }
 h3 {
@@ -76,12 +69,9 @@ h3 {
 	font-weight: 800;
 }
 
-
-/*Каталог*/
 .leftPanel {
 	max-width: 300px; 
 	width: 30%;
-	height: fit-content;
 	float: left;
 	display: flex;
 	flex-direction: column;
@@ -90,7 +80,8 @@ h3 {
 }
 
 .rightPanel {
-	flex: 1;
+	width: 80%;
+	float: left;
 	display: flex;
 	flex-wrap: wrap;
 	padding: 20px;
@@ -116,7 +107,7 @@ h3 {
 }
 
 input[type="number"] {
-	-moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
 
 .inputCatalog {
@@ -132,15 +123,19 @@ input[type="number"] {
 	max-width: 190px;
 	transition: .4s;
 }
+
 .inputCatalog:hover {
 	box-shadow: 0 0 0 .15vw var(--second-color);
 }
+
 .inputCatalog:focus {
 	box-shadow: 0 0 0 .15vw var(--second-color);
 }
 .input[type="checkbox"] {	
 	display: none;
 }
+
+  /* Style for the custom checkbox */
 .custom-checkbox {
 	display: inline-block;
 	width: 20px;
@@ -150,6 +145,8 @@ input[type="number"] {
 	position: relative;
 	cursor: pointer;
 }
+
+/* Style for the custom checkmark */
 .custom-checkbox::after {
 	content: "";
 	position: absolute;
@@ -167,6 +164,7 @@ input[type="number"] {
 .input[type="checkbox"]:checked + .custom-checkbox::after {
 	opacity: 1;
 }
+
 .toggle-button {
   cursor: pointer;
   font-weight: bold;
@@ -175,13 +173,16 @@ input[type="number"] {
   justify-content: space-between;
   user-select: none;
 }
+
 .toggle-button::after {
   content: "▼";
   transition: transform 0.3s ease;
 }
+
 .toggle-button.open::after {
   transform: rotate(180deg);
 }
+
 .parameters-content {
   overflow: hidden;
   height: 0;
@@ -189,6 +190,7 @@ input[type="number"] {
 }
 
 /* картки з товарами */
+
 .card {
   width: 195px;
   height: 285px;
@@ -204,7 +206,6 @@ input[type="number"] {
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  padding: 0px;
 }
 .card img {
   height: 100%;
@@ -212,13 +213,15 @@ input[type="number"] {
   transition: 0.2s ease-in-out;
   z-index: 1;
 }
+
 .card:hover > img {
   height: 95%;
-  filter: blur(4px);
+  filter: blur(3px);
   animation: anim 3s infinite;
 }
+
 .card:hover {
-  box-shadow: 1px 1px 5px 5px var(--second-color);
+  	box-shadow: 1px 1px 5px 5px #9fe4e44a;
 }
 .textBox {
   opacity: 0;
@@ -230,103 +233,32 @@ input[type="number"] {
   transition: 0.2s ease-in-out;
   z-index: 2;
 }
+
 .textBox > .text {
   font-weight: bold;
 }
+
 .textBox > .head {
   font-size: 20px;
 }
+
 .textBox > .price {
   font-size: 17px;
 }
+
 .textBox > span {
   font-size: 12px;
+  color: lightgrey;
 }
+
 .card:hover > .textBox {
   opacity: 1;
 }
-/* Сердечко*/
-.heart-container {
-  --heart-color: white;
-  position: relative;
-  width: 20px;
-  height: 20px;
-  transition: .3s;
-}
-.heart-container .checkbox {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  z-index: 20;
-  cursor: pointer;
-}
-.heart-container .svg-container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.heart-container .svg-outline, .heart-container .svg-filled {
-  fill: var(--heart-color);
-  position: absolute;
-}
-.heart-container .svg-filled {
-	display: none;
-  animation: keyframes-svg-filled 1s;
-}
-.heart-container .svg-celebrate {
-  position: absolute;
-  animation: keyframes-svg-celebrate .5s;
-  animation-fill-mode: forwards;
-  display: none;
-  stroke: var(--heart-color);
-  fill: var(--heart-color);
-  stroke-width: 2px;
-}
-.heart-container .checkbox:checked~.svg-container .svg-filled {
-  display: block
-}
-.heart-container .checkbox:checked~.svg-container .svg-celebrate {
-  display: block
-}
-@keyframes keyframes-svg-filled {
-  0% {
-    transform: scale(0);
-  }
 
-  25% {
-    transform: scale(1.2);
-  }
-
-  50% {
-    transform: scale(1);
-    filter: brightness(1.5);
-  }
-}
-@keyframes keyframes-svg-celebrate {
-  0% {
-    transform: scale(0);
-  }
-
-  50% {
-    opacity: 1;
-    filter: brightness(1.5);
-  }
-
-  100% {
-    transform: scale(1.4);
-    opacity: 0;
-    display: none;
-  }
+.card:hover {
+  transform: scale(1.04);
 }
 
-
-
-
-
-/*Головна сторінка*/
 .logo{
 	width: 80px;
 	height: 70px;
@@ -379,198 +311,146 @@ input[type="number"] {
 }
 .drugdiller{
 	margin-top: 50px;
-	margin-left: 110px;
 	width: 1200px;
-	height: 90px;
-	border-radius: 32px;
+	height: 50px;
+	border-radius: 32px 32px 0 0;
 	background-color: var(--button-bg-color);
 	
 }
 .secondScreen{
 	background-color: var(--main-bg-color);
+	align-items: center;
 }
 .grayBlock{
-	width: 1200px;
-	height: 1080px;
-	margin-left: 110px;
-	background-color: var(--grayBlock-color);
-}
-
-/*Товари*/
-
-.commodityInfo {
-	width: 20vw;
-	height: 100vh;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	gap: 50px;
+	align-items: center;
+	width: 1200px;
+	height: 1080px;
+	background-color: var(--grayBlock-color);
 }
-.commodityInfo  div{
+.title{
+	font-size: 48px;
+	width: 700px;
+	text-align: center;
+	padding: 20px 0;
+	font-weight: bold;
+
+}
+.subtitle{
+	width: 900px;
+	text-align: left;
+	font-size: 32px;
+	font-weight: bold;
+}
+.threeBlocks{
+	width: 960px;
+	height: 360px;
 	display: flex;
 	justify-content: space-between;
 }
-.commodityModel {
-	flex: 1;
-	height: 100vh;
-	display: flex;
-	justify-content: center;
+.head{
 	align-items: center;
+	margin-top: 5px;
+	border-radius: 16px 16px 0 0;
+	background-color: var(--button-bg-color);
+	width: 300px;
+	height: 75px;
+
+}
+.ratingBlock{
+	margin-top: 30px;
+}
+.block{
+	margin-top: 20px;
+	background-color: var(--button-bg-color);
+	width: 300px;
+	height: 260px;
+	border-radius: 0 0 20px 20px;
+
+}
+.rating{
+	margin-top: 20px;
+	width: 960px;
+	height: 220px;
+	background-color: var(--button-bg-color);
+	border-radius: 0 20px 20px 20px;
+}
+.rating p{
+	font-size: 24px;
+	font-weight: bold;
+	line-height:30px;
+	padding: 5px 20px 5px 20px;
+}
+.headTitle{
+	padding: 20px 0;
+	font-size: 32px;
+	font-weight: bold;
+	text-align: center;
+}
+.blockText p{
+	font-size: 24px;
+	font-weight: bold;
+	line-height:30px;
+	padding: 0 5px;
 }
 
-.paralelegram {
-	position: absolute;
-	width: 50vw;
-	height: 100vh;
-	top: 50;
-	left: 50;
-	transform: scaleX(0.8) skewX(-20deg);
-	background-color: var(--second-color);
+.usb{
+	width: 1770px;
+	height: 520px;
 }
-.commodityModel img {
-	z-index: 10;
-	width: auto;
-	max-width: 100%;
-	height: fit-content;
-	max-height: 100%;
-}
-.commodityPrice {
-	width: 20vw;
-	height: 100vh;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	gap: 50px;
-}
-.commodityPrice div {
-	display: flex;
+.catalogButton{
+	font-size: 24px;
+	font-weight: bold;
+	width: 250px;
+
+	text-align: center;
 	align-items: center;
-	gap: 5px;
+	background-color: var(--button-bg-color);
+	padding:  20px;
+	border-radius: 20px;
 }
 
-.printButton {
-	width: 280px;
-	height: 70px;
-	background-color: var(--second-color);
-	border: none;
-	border-radius: 25px;
-	color: white;
-	font-size: 30px;
-	font-weight: 800;
-	cursor: pointer;
+.leftP{
+	width: 500px;
 }
+.rightP{
+	margin-left: 500px;
+	width: 700px;
+}
+.infoTitle{
+	font-size: 40px;
+	font-weight: bold;
+	width: 620px;
+	text-align: center;
+	line-height: 40px;
+}
+.infoText{
+	margin-top: 20px;
+	font-size: 28px;
+	font-weight: bold;
+	width: 620px;
+	line-height: 40px;
 
-.sizeButton {
-	background-color: rgba(0, 0, 0, 0);
-	border: none;
-	color: gray;
-	cursor: pointer;
 }
+.megaButton{
+	margin-top: 300px;
 
-.sizeButton input {
-  display: none;
+	background-color: var(--button-bg-color);
+	width: 510px;
+	font-size: 40px;
+	font-weight: bold;
+	text-align: center;
+	border-radius: 20px;
+	padding:30px 20px;
 }
+.footer{
+	height: 500px;
+}
+.socialMedia{
 
-.sizeButton label {
-  cursor: pointer;
-  display: flex;
-  padding: 10px;
-  justify-content: center;
-  align-items: center;
-  z-index: 1;
-}
-
-.sizeButton label:has(input:checked) {
-  color: var(--accent-color);
-}
-
-.arrow {
-	width: fit-content;
-	height: fit-content;
-	background-color: rgba(0, 0, 0, 0);
-	position: absolute;
-	top: 25px;
-	padding: 0px;
-}
-
-.commodity {
-	position: relative;
-}
-
-.commodityOrder {
-	position: absolute;
-	transform: translateX(200%);
-	top: 0;
-	right: 0;
-	opacity: 0;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center	;
-	gap: 20px;
-	height: 100vh;
-}
-
-
-/* Плавність при відкритті та закритті */
-.commodityInfo,
-.commodityModel,
-.commodityPrice,
-.commodityOrder {
-    transition: transform 0.7s ease-in-out, opacity 0.7s ease-in-out;
-}
-
-/* Відкриття блоку */
-.show-map .commodityInfo {
-    transform: translateX(-200%);
-}
-.show-map .commodityModel {
-    transform: translateX(-50%);
-}
-.show-map .commodityPrice {
-    transform: translateX(-120%);
-}
-.show-map .commodityOrder {
-	transform: translateX(100%);
-	animation: slideIn 0.7s ease-in-out forwards;
-	opacity: 1;
-}
-
-@keyframes slideIn {
-	from { transform: translateX(100%); opacity: 0}
-	to { transform: translateX(0); opacity: 1}
-}
-@keyframes slideOut {
-	from { transform: translateX(0); opacity: 1}
-	to { transform: translateX(100%); opacity: 0}
-}
-
-/* Закриття блоку (повернення) */
-.container:not(.show-map) .commodityInfo, 
-.container:not(.show-map) .commodityModel,
-.container:not(.show-map) .commodityPrice {
-    transform: translateX(0);
-}
-.container:not(.show-map) .commodityOrder {
-	animation: slideOut 0.7s ease-in-out forwards;
-}
-select {
-  width: 100%;
-	max-width: 300px;
-	padding: 10px 12px;
-	border-radius: 8px;
-	background-color: var(--second-color);
-	appearance: none; 
-	border: none;
-	color: var(--text-color);
-}
-select:focus {
-	outline: none;
-}
-
-.select-wrapper {
-	padding: 20px;
-}
-option {
-	background-color: var(--second-color);
+	margin-top: 300px;
+	font-size: 36px;
+	font-weight: bold;
+	text-align: center;
 }
