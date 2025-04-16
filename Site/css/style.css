@@ -79,14 +79,24 @@ h3 {
 
 /*Каталог*/
 .leftPanel {
+	padding-top: 20px;
 	max-width: 300px; 
 	width: 30%;
 	height: fit-content;
-	float: left;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	gap: 20px;
+}
+
+.leftPanel button{
+	background-color: white;
+	border-radius: 15px;
+	border: none;
+	color: black;
+	font-size: 14px;
+	font-weight: bold;
+	height: 40px;
 }
 
 .rightPanel {
@@ -235,6 +245,8 @@ input[type="number"] {
 }
 .textBox > .head {
   font-size: 20px;
+  width: 100%;
+  text-align: center;
 }
 .textBox > .price {
   font-size: 17px;
@@ -522,7 +534,7 @@ input[type="number"] {
 
 /* Відкриття блоку */
 .show-map .commodityInfo {
-    transform: translateX(-200%);
+	transform: translateX(-200%);
 }
 .show-map .commodityModel {
     transform: translateX(-50%);
