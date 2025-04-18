@@ -102,7 +102,7 @@
 	$min_price = isset($_GET['price_min']) && $_GET['price_min'] !== '' ? (int)$_GET['price_min'] : 0;
 	$max_price = isset($_GET['price_max']) && $_GET['price_max'] !== '' ? (int)$_GET['price_max'] : PHP_INT_MAX;
 
-	$stmt = $conn->prepare("SELECT model_id, title, price, image_path FROM models WHERE price BETWEEN ? AND ? LIMIT 30");
+	$stmt = $conn->prepare("SELECT model_id, title, s_price, image_path FROM models WHERE s_price BETWEEN ? AND ? LIMIT 30");
 	$stmt->bind_param("ii", $min_price, $max_price);
 	$stmt->execute();
 	$result = $stmt->get_result();
@@ -114,7 +114,7 @@
                 <div class="textBox">
                     <p class="text head">'.htmlspecialchars($row['title']).'</p>
                     <span>Author of model</span>
-                    <p class="text price">' . htmlspecialchars($row['price']) . ' грн</p>
+                    <p class="text price">' . htmlspecialchars($row['s_price']) . ' грн</p>
                     <div title="Like" class="heart-container"> 
                         <input class="checkbox" type="checkbox" onclick="event.stopPropagation();">
                         <div class="svg-container">
