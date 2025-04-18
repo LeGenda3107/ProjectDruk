@@ -1,0 +1,55 @@
+:root {
+	--main-bg-color: rgba(27, 22, 27, 1);
+	--main-bg-color: rgba(35, 19, 55, 1);
+	--text-color: white;
+	--button-bg-color: rgba(91, 46, 127, 1);
+	--accent-color: white;
+	--grayBlock-color: rgba(18, 18, 18, 1);
+	--second-color: rgba(91, 46, 127, 1);
+}
+
+body {
+	background-color: var(--main-bg-color);
+	color: var(--text-color);
+	font-family: 'Montserrat';
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+html {
+	overflow-x: hidden;
+	font-family: "Montserrat", sans-serif;
+}
+
+.container {
+	width: 90vw;
+	display: flex;
+}
+
+div.container {
+	width: 90vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.singUp{
+    margin-top: 65px;
+    width: 600px;
+    height: 900px;
+    background-color: var(--grayBlock-color);
+    padding: 50px 0;
+}
+.title{
+    margin-top: 200px;
+    text-align: center;
+    font-size: 48px;
+}
+.textField{
+    background-color: var(--text-color);
+    margin-left: 50px;
+    height: 50px;
+    color: black;
+    width: 300px;
+    margin-top: 30px;
+    font-size: 28px;
+}

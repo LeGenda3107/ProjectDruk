@@ -378,12 +378,13 @@ input[type="number"] {
 	justify-content: space-around;
 }
 .drugdiller{
+	margin-right: 40px;
 	margin-top: 50px;
-	margin-left: 110px;
 	width: 1200px;
-	height: 90px;
-	border-radius: 32px;
+	height: 50px;
+	border-radius: 32px 32px 0 0;
 	background-color: var(--button-bg-color);
+
 	
 }
 .secondScreen{
@@ -392,8 +393,133 @@ input[type="number"] {
 .grayBlock{
 	width: 1200px;
 	height: 1080px;
-	margin-left: 110px;
 	background-color: var(--grayBlock-color);
+}
+
+.title{
+	font-size: 48px;
+	width: 700px;
+	text-align: center;
+	padding: 20px 0;
+	font-weight: bold;
+
+}
+.subtitle{
+	width: 900px;
+	text-align: left;
+	font-size: 32px;
+	font-weight: bold;
+}
+.threeBlocks{
+	width: 960px;
+	height: 360px;
+	display: flex;
+	justify-content: space-between;
+}
+.head{
+	align-items: center;
+	margin-top: 5px;
+	border-radius: 16px 16px 0 0;
+	background-color: var(--button-bg-color);
+	width: 300px;
+	height: 75px;
+
+}
+.ratingBlock{
+	margin-top: 30px;
+}
+.block{
+	margin-top: 20px;
+	background-color: var(--button-bg-color);
+	width: 300px;
+	height: 260px;
+	border-radius: 0 0 20px 20px;
+
+}
+.rating{
+	margin-top: 20px;
+	width: 960px;
+	height: 220px;
+	background-color: var(--button-bg-color);
+	border-radius: 0 20px 20px 20px;
+}
+.rating p{
+	font-size: 24px;
+	font-weight: bold;
+	line-height:30px;
+	padding: 5px 20px 5px 20px;
+}
+.headTitle{
+	padding: 20px 0;
+	font-size: 32px;
+	font-weight: bold;
+	text-align: center;
+}
+.blockText p{
+	font-size: 24px;
+	font-weight: bold;
+	line-height:30px;
+	padding: 0 5px;
+}
+
+.usb{
+	width: 1770px;
+	height: 520px;
+}
+.catalogButton{
+	font-size: 24px;
+	font-weight: bold;
+	width: 250px;
+
+	text-align: center;
+	align-items: center;
+	background-color: var(--button-bg-color);
+	padding:  20px;
+	border-radius: 20px;
+}
+
+.leftP{
+	width: 500px;
+}
+.rightP{
+	margin-left: 500px;
+	width: 700px;
+}
+.infoTitle{
+	font-size: 40px;
+	font-weight: bold;
+	width: 620px;
+	text-align: center;
+	line-height: 40px;
+}
+.infoText{
+	margin-top: 20px;
+	font-size: 28px;
+	font-weight: bold;
+	width: 620px;
+	line-height: 40px;
+
+}
+.megaButton{
+	margin-top: 300px;
+
+	background-color: var(--button-bg-color);
+	width: 510px;
+	font-size: 40px;
+	font-weight: bold;
+	text-align: center;
+	border-radius: 20px;
+	padding:30px 20px;
+}
+.footer{
+	height: 500px;
+}
+.socialMedia{
+
+	margin-top: 300px;
+	font-size: 36px;
+	font-weight: bold;
+	text-align: center;
 }
 
 /*Товари*/
