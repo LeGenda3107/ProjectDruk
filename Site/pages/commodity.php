@@ -11,7 +11,7 @@
         die("Помилка підключення: " . $conn->connect_error);
     }
 
-    $stmt = $conn->prepare("SELECT model_id, title, description, s_price, m_price, l_price, s_size, m_size, l_size, s_weight, m_weight, l_weight, DATE_FORMAT(s_time, '%H:%i') as s_time, DATE_FORMAT(m_time, '%H:%i') as m_time, DATE_FORMAT(l_time, '%H:%i') as l_time, image_path FROM models WHERE model_id = ?");
+    $stmt = $conn->prepare("SELECT model_id, title, description, s_price, m_price, l_price, s_size, m_size, l_size, s_weight, m_weight, l_weight, DATE_FORMAT(s_time, '%H:%i') as s_time, DATE_FORMAT(m_time, '%H:%i') as m_time, DATE_FORMAT(l_time, '%H:%i') as l_time, model_path FROM models WHERE model_id = ?");
     $stmt->bind_param("i", $id);
     $stmt->execute();
     $result = $stmt->get_result();
@@ -60,7 +60,8 @@
 	</article>
 	<article class="commodityModel">
 		<div class="paralelegram"></div>
-		<img src="../<?php echo $model['image_path'];?>">
+		<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+		<model-viewer src="../assets/models/<?php echo $model['model_path'];?>" alt="3D модель" auto-rotate camera-controls></model-viewer>
 	</article>
 	<article class="commodityPrice">
   <h1 id="price"><?php echo $model['s_price'];?> грн</h1>
