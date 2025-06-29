@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Галерея робіт - PrintBox</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <style>
+    /* Уніфіковані анімації для галереї */
+    .gallery-header {
+      animation: fadeInUp 0.8s ease-out;
+    }
+    
+    .gallery-title {
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+    
+    .gallery-subtitle {
+      animation: fadeInUp 0.8s ease-out 0.4s both;
+    }
+    
+    .filter-buttons {
+      animation: fadeInUp 0.8s ease-out 0.6s both;
+    }
+    
+    .gallery-grid {
+      animation: fadeInUp 0.8s ease-out 0.8s both;
+    }
+    
+    .submit-work-section {
+      animation: fadeInScale 0.6s ease-out 1s both;
+    }
+    
+    /* Анімації для фільтрів */
+    .filter-btn {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .filter-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .filter-btn:hover::before {
+      left: 100%;
+    }
+    
+    .filter-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(18, 18, 18, 0.3);
+    }
+    
+    /* Анімації для пагінації */
+    .pagination-btn {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .pagination-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 12px rgba(18, 18, 18, 0.2);
+    }
+  </style>
+</head>
+<body class="bg-milk text-gray-900">
+  <!-- Fixed Minimal Header -->
+  <header class="header-minimal fixed-header">
+    <div class="container header-bar">
+      <nav class="header-nav">
+        <a href="catalog.html" class="nav-link">Каталог</a>
+        <a href="gallery.html" class="nav-link">Галерея</a>
+        <a href="services.html" class="nav-link">Послуги</a>
+        <a href="upload.html" class="nav-link">Завантажити</a>
+      </nav>
+      <div class="logo">
+        <a href="index.html" style="text-decoration: none; color: inherit;">PrintBox</a>
+      </div>
+      <div style="display: flex; gap: 1rem; align-items: center;">
+        <button class="profile-btn" aria-label="Кошик" onclick="window.location.href='cart.html'">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+        </button>
+        <button class="profile-btn" aria-label="Обліковий запис" onclick="window.location.href='profile.html'">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="5"/>
+            <path d="M4 20c0-2.5 4-4.5 8-4.5s8 2 8 4.5"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Gallery Header -->
+  <section class="container py-12 gallery-header" style="margin-top: 80px;">
+    <div class="hero-center-group" style="max-width: 800px; background: none; box-shadow: none; border: none; padding: 0;">
+      <h1 class="section-title gallery-title">Галерея надрукованих робіт</h1>
+      <p class="gallery-subtitle" style="text-align: center; color: #666; margin-bottom: 2rem;">Надихайтесь роботами нашої спільноти</p>
+      
+      <!-- Filter Categories -->
+      <div class="filter-buttons" style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem;">
+        <button class="print-btn filter-btn" style="background: #121212; border-radius: 20px; padding: 0.5rem 1.5rem; font-size: 0.9rem;">Всі</button>
+        <button class="print-btn filter-btn" style="background: #333; border-radius: 20px; padding: 0.5rem 1.5rem; font-size: 0.9rem;">Архітектура</button>
+        <button class="print-btn filter-btn" style="background: #333; border-radius: 20px; padding: 0.5rem 1.5rem; font-size: 0.9rem;">Мистецтво</button>
+        <button class="print-btn filter-btn" style="background: #333; border-radius: 20px; padding: 0.5rem 1.5rem; font-size: 0.9rem;">Інструменти</button>
+        <button class="print-btn filter-btn" style="background: #333; border-radius: 20px; padding: 0.5rem 1.5rem; font-size: 0.9rem;">Меблі</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Grid -->
+  <section class="container py-12 gallery-grid">
+    <div class="model-grid-modern">
+      <div class="model-card" onclick="window.location.href='gallery-detail.html?id=1'">
+        <div class="model-card-3d">🏠 Надрукований будинок</div>
+        <div class="model-card-info">
+          <div class="model-title">Мініатюрний будинок</div>
+          <div class="model-meta">від <span class="model-creator">@architect</span> • PLA, 0.2mm</div>
+          <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+            <span style="background: #f0f0f0; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">🏆 Переможець</span>
+          </div>
+        </div>
+      </div>
+      <div class="model-card" onclick="window.location.href='gallery-detail.html?id=2'">
+        <div class="model-card-3d">🎨 Скульптура</div>
+        <div class="model-card-info">
+          <div class="model-title">Абстрактна скульптура</div>
+          <div class="model-meta">від <span class="model-creator">@artist</span> • PETG, 0.1mm</div>
+          <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+            <span style="background: #f0f0f0; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">⭐ Висока якість</span>
+          </div>
+        </div>
+      </div>
+      <div class="model-card" onclick="window.location.href='gallery-detail.html?id=3'">
+        <div class="model-card-3d">🔧 Деталь механізму</div>
+        <div class="model-card-info">
+          <div class="model-title">Шестерня</div>
+          <div class="model-meta">від <span class="model-creator">@engineer</span> • ABS, 0.15mm</div>
+          <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+            <span style="background: #f0f0f0; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">🔧 Функціональна</span>
+          </div>
+        </div>
+      </div>
+      <div class="model-card" onclick="window.location.href='gallery-detail.html?id=4'">
+        <div class="model-card-3d">📱 Підставка</div>
+        <div class="model-card-info">
+          <div class="model-title">Підставка для телефону</div>
+          <div class="model-meta">від <span class="model-creator">@gadgeteer</span> • PLA+, 0.2mm</div>
+          <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+            <span style="background: #f0f0f0; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">📱 Практична</span>
+          </div>
+        </div>
+      </div>
+      <div class="model-card" onclick="window.location.href='gallery-detail.html?id=5'">
+        <div class="model-card-3d">🌱 Горщик</div>
+        <div class="model-card-info">
+          <div class="model-title">Квітковий горщик</div>
+          <div class="model-meta">від <span class="model-creator">@greenmaker</span> • TPU, 0.3mm</div>
+          <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+            <span style="background: #f0f0f0; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">🌱 Гнучкий</span>
+          </div>
+        </div>
+      </div>
+      <div class="model-card" onclick="window.location.href='gallery-detail.html?id=6'">
+        <div class="model-card-3d">🎮 Контролер</div>
+        <div class="model-card-info">
+          <div class="model-title">Ігровий контролер</div>
+          <div class="model-meta">від <span class="model-creator">@gamer3d</span> • PLA, 0.1mm</div>
+          <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+            <span style="background: #f0f0f0; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">🎮 Детальна</span>
+          </div>
+        </div>
+      </div>
+      <div class="model-card" onclick="window.location.href='gallery-detail.html?id=7'">
+        <div class="model-card-3d">🚗 Автомобіль</div>
+        <div class="model-card-info">
+          <div class="model-title">Спортивний автомобіль</div>
+          <div class="model-meta">від <span class="model-creator">@carmaker</span> • ABS, 0.08mm</div>
+          <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+            <span style="background: #f0f0f0; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">🚗 Високоточний</span>
+          </div>
+        </div>
+      </div>
+      <div class="model-card" onclick="window.location.href='gallery-detail.html?id=8'">
+        <div class="model-card-3d">🏰 Замок</div>
+        <div class="model-card-info">
+          <div class="model-title">Середньовічний замок</div>
+          <div class="model-meta">від <span class="model-creator">@castlebuilder</span> • PLA, 0.12mm</div>
+          <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
+            <span style="background: #f0f0f0; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">🏰 Складний</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Pagination -->
+    <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 3rem;">
+      <button class="print-btn pagination-btn" style="background: #333; border-radius: 8px; padding: 0.5rem 1rem;">← Попередня</button>
+      <button class="print-btn pagination-btn" style="background: #121212; border-radius: 8px; padding: 0.5rem 1rem;">1</button>
+      <button class="print-btn pagination-btn" style="background: #333; border-radius: 8px; padding: 0.5rem 1rem;">2</button>
+      <button class="print-btn pagination-btn" style="background: #333; border-radius: 8px; padding: 0.5rem 1rem;">3</button>
+      <button class="print-btn pagination-btn" style="background: #333; border-radius: 8px; padding: 0.5rem 1rem;">Наступна →</button>
+    </div>
+  </section>
+
+  <!-- Submit Your Work -->
+  <section class="container py-12 submit-work-section">
+    <div style="background: linear-gradient(135deg, #121212 0%, #333333 100%); padding: 3rem; border-radius: 20px; text-align: center; color: #fff;">
+      <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">Поділіться своєю роботою</h2>
+      <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9;">Покажіть світу, що ви можете створити на 3D принтері</p>
+      <button class="upload-btn" onclick="window.location.href='upload.html'">Завантажити роботу</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-minimal py-8">
+    <div class="container flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-4">
+      <div>© 2024 PrintBox - Преміум платформа 3D друку</div>
+      <div class="flex gap-6">
+        <a href="faq.html" class="footer-link">Часті питання</a>
+        <a href="contact.html" class="footer-link">Контакти</a>
+        <a href="terms.html" class="footer-link">Умови використання</a>
+        <a href="privacy.html" class="footer-link">Політика конфіденційності</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html> 

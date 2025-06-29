@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Каталог моделей - PrintBox</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+  <style>
+    /* Додаткові стилі для каталогу з PHP версії */
+    body {
+      overflow-x: hidden;
+    }
+    
+    .catalog {
+      display: flex;
+      gap: 2rem;
+      padding: 0 0.5rem;
+      margin-top: 80px;
+      min-height: calc(100vh - 80px);
+    }
+    
+    .leftPanel {
+      width: 300px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      height: fit-content;
+      position: sticky;
+      top: 100px;
+    }
+    
+    .leftPanel h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #181818;
+    }
+    
+    .leftPanel button {
+      background-color: #121212;
+      border-radius: 15px;
+      border: none;
+      color: white;
+      font-size: 14px;
+      font-weight: bold;
+      height: 40px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    
+    .leftPanel button:hover {
+      background-color: #333;
+    }
+    
+    .rightPanel {
+      flex: 1;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      align-content: start;
+    }
+    
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .parameters {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .parameters h3 {
+      font-size: 14px;
+      font-weight: 800;
+      color: #181818;
+      margin-bottom: 0.5rem;
+    }
+    
+    .parameters-content {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      overflow: hidden;
+      height: 0;
+      transition: height 0.3s ease;
+    }
+    
+    .parameters-content.open {
+      height: auto;
+    }
+    
+    .inputCatalog {
+      font-size: 14px;
+      width: 70px;
+      height: 25px;
+      background-color: #fff;
+      box-shadow: 0 0 4px rgba(0,0,0,0.5), 0 0 0 2px transparent;
+      border-radius: 4px;
+      border: none;
+      outline: none;
+      padding: 4px;
+      max-width: 190px;
+      transition: 0.4s;
+    }
+    
+    .inputCatalog:hover {
+      box-shadow: 0 0 0 2px #121212;
+    }
+    
+    .inputCatalog:focus {
+      box-shadow: 0 0 0 2px #121212;
+    }
+    
+    .input[type="checkbox"] {	
+      display: none;
+    }
+    
+    .custom-checkbox {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border: 2px solid #666;
+      border-radius: 4px;
+      position: relative;
+      cursor: pointer;
+    }
+    
+    .custom-checkbox::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 10px;
+      height: 10px;
+      background-color: #121212;
+      border-radius: 2px;
+      opacity: 0;
+    }
+    
+    .input[type="checkbox"]:checked + .custom-checkbox::after {
+      opacity: 1;
+    }
+    
+    .toggle-button {
+      cursor: pointer;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      color: #181818;
+    }
+    
+    .toggle-button::after {
+      content: "▼";
+      transition: transform 0.3s ease;
+    }
+    
+    .toggle-button.open::after {
+      transform: rotate(180deg);
+    }
+    
+    /* Картки з товарами з PHP версії */
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      cursor: pointer;
+      position: relative;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+      border-color: rgba(18, 18, 18, 0.1);
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #121212, #333);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    
+    .card:hover::before {
+      opacity: 1;
+    }
+    
+    .card-3d {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      background: linear-gradient(135deg, #121212 0%, #333 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      transition: all 0.3s ease;
+    }
+    
+    .card:hover .card-3d {
+      transform: none;
+    }
+    
+    .textBox {
+      padding: 1.5rem;
+      position: relative;
+      background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(248,249,250,0.95) 100%);
+    }
+    
+    .text.head {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #121212;
+      margin: 0 0 0.5rem 0;
+      line-height: 1.3;
+    }
+    
+    .textBox span {
+      font-size: 0.9rem;
+      color: #666;
+      display: block;
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+    
+    .text.price {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #121212;
+      margin: 0.75rem 0 0 0;
+      background: linear-gradient(135deg, #121212, #333);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .heart-container {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      --heart-color: #121212;
+      transition: all 0.3s ease;
+    }
+    
+    .heart-container:hover {
+      transform: scale(1.1);
+    }
+    
+    /* Сердечко з PHP версії */
+    .heart-container .checkbox {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      z-index: 20;
+      cursor: pointer;
+    }
+    
+    .heart-container .svg-container {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .heart-container .svg-outline, .heart-container .svg-filled {
+      fill: var(--heart-color);
+      position: absolute;
+    }
+    
+    .heart-container .svg-filled {
+      display: none;
+      animation: keyframes-svg-filled 1s;
+    }
+    
+    .heart-container .svg-celebrate {
+      position: absolute;
+      animation: keyframes-svg-celebrate 0.5s;
+      animation-fill-mode: forwards;
+      display: none;
+      stroke: var(--heart-color);
+      fill: var(--heart-color);
+      stroke-width: 2px;
+    }
+    
+    .heart-container .checkbox:checked~.svg-container .svg-filled {
+      display: block
+    }
+    
+    .heart-container .checkbox:checked~.svg-container .svg-celebrate {
+      display: block
+    }
+    
+    @keyframes keyframes-svg-filled {
+      0% {
+        transform: scale(0);
+      }
+      25% {
+        transform: scale(1.2);
+      }
+      50% {
+        transform: scale(1);
+        filter: brightness(1.5);
+      }
+    }
+    
+    @keyframes keyframes-svg-celebrate {
+      0% {
+        transform: scale(0);
+      }
+      50% {
+        opacity: 1;
+        filter: brightness(1.5);
+      }
+      100% {
+        transform: scale(1.4);
+        opacity: 0;
+        display: none;
+      }
+    }
+    
+    @keyframes anim {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
+    }
+    
+    /* Покращення читабельності тексту */
+    .parameters p {
+      color: #333 !important;
+      font-weight: 500;
+    }
+    
+    .leftPanel p {
+      color: #333 !important;
+      font-weight: 500;
+    }
+    
+    /* Нові стилі для фільтрів */
+    .filter-section {
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #e5e5e5;
+    }
+    
+    .filter-section:last-child {
+      border-bottom: none;
+    }
+    
+    .filter-section h4 {
+      margin: 0 0 0.75rem 0;
+      font-size: 1rem;
+      font-weight: 600;
+      color: #121212;
+    }
+    
+    .filter-input {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      transition: border-color 0.3s ease;
+    }
+    
+    .filter-input:focus {
+      outline: none;
+      border-color: #121212;
+    }
+    
+    .filter-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .filter-options label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: #333;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    
+    .filter-options label:hover {
+      color: #121212;
+    }
+    
+    .filter-options input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      accent-color: #121212;
+    }
+    
+    .price-inputs {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .price-input {
+      flex: 1;
+      min-width: 80px;
+      max-width: 120px;
+      padding: 0.5rem;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    
+    .price-input:focus {
+      outline: none;
+      border-color: #121212;
+      box-shadow: 0 0 0 2px rgba(18, 18, 18, 0.1);
+    }
+    
+    .price-slider-container {
+      position: relative;
+    }
+    
+    .price-slider {
+      position: relative;
+      height: 40px;
+      display: flex;
+      align-items: center;
+    }
+    
+    .price-slider-track {
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      background: #ddd;
+      border-radius: 2px;
+    }
+    
+    .price-range {
+      position: absolute;
+      width: 100%;
+      height: 4px;
+      background: transparent;
+      pointer-events: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    
+    .price-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background: #121212;
+      border-radius: 50%;
+      cursor: pointer;
+      pointer-events: auto;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    
+    .price-range::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      background: #121212;
+      border-radius: 50%;
+      cursor: pointer;
+      pointer-events: auto;
+      border: none;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    
+    .price-values {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      color: #666;
+    }
+    
+    .rating-filter {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .rating-filter label {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: #333;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+    
+    .rating-filter label:hover {
+      color: #121212;
+    }
+    
+    .filter-select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      background: white;
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+    }
+    
+    .filter-select:focus {
+      outline: none;
+      border-color: #121212;
+    }
+    
+    .clear-filters-btn {
+      width: 100%;
+      padding: 0.75rem;
+      background: #121212;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+    
+    .clear-filters-btn:hover {
+      background: #333;
+      transform: translateY(-1px);
+    }
+    
+    /* Анімація кошика */
+    .cart-animation {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+    
+    .flying-item {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      background: #121212;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 24px;
+      animation: flyToCart 1s ease-in-out forwards;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+    
+    @keyframes flyToCart {
+      0% {
+        transform: scale(1) rotate(0deg);
+        opacity: 1;
+      }
+      50% {
+        transform: scale(0.5) rotate(180deg);
+        opacity: 0.8;
+      }
+      100% {
+        transform: scale(0.1) rotate(360deg);
+        opacity: 0;
+      }
+    }
+    
+    /* Підсвічування кнопки кошика */
+    .cart-btn-highlight {
+      animation: cartPulse 0.5s ease-in-out;
+    }
+    
+    @keyframes cartPulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+    
+    /* Адаптивність для каталогу */
+    @media (max-width: 1200px) {
+      .catalog {
+        padding: 0 0.5rem;
+        gap: 1rem;
+      }
+      
+      .leftPanel {
+        width: 280px;
+        padding: 1rem;
+      }
+      
+      .filter-section h4 {
+        font-size: 0.9rem;
+      }
+      
+      .filter-options label {
+        font-size: 0.85rem;
+      }
+      
+      .rightPanel {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .catalog {
+        flex-direction: column;
+        padding: 0 0.5rem;
+        gap: 1rem;
+      }
+      
+      .leftPanel {
+        width: 100%;
+        position: static;
+        order: 2;
+      }
+      
+      .rightPanel {
+        order: 1;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 1rem;
+      }
+      
+      .filter-section {
+        margin-bottom: 1rem;
+        padding-bottom: 1rem;
+      }
+      
+      .filter-options {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 0.5rem;
+      }
+      
+      .price-inputs {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      
+      .price-input {
+        width: 100%;
+      }
+      
+      .card img {
+        height: 180px;
+      }
+      
+      .textBox {
+        padding: 1rem;
+      }
+      
+      .text.head {
+        font-size: 1.1rem;
+      }
+      
+      .text.price {
+        font-size: 1.2rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .catalog {
+        padding: 0 0.25rem;
+        gap: 0.5rem;
+      }
+      
+      .leftPanel {
+        padding: 0.75rem;
+      }
+      
+      .rightPanel {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+      }
+      
+      .filter-options {
+        grid-template-columns: 1fr;
+      }
+      
+      .filter-section h4 {
+        font-size: 0.85rem;
+      }
+      
+      .filter-options label {
+        font-size: 0.8rem;
+      }
+      
+      .clear-filters-btn {
+        padding: 0.5rem;
+        font-size: 0.8rem;
+      }
+      
+      .card img {
+        height: 160px;
+      }
+      
+      .textBox {
+        padding: 0.75rem;
+      }
+      
+      .text.head {
+        font-size: 1rem;
+      }
+      
+      .text.price {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-milk text-gray-900">
+  <!-- Fixed Minimal Header -->
+  <header class="header-minimal fixed-header">
+    <div class="container header-bar">
+      <nav class="header-nav">
+        <a href="catalog.html" class="nav-link">Каталог</a>
+        <a href="gallery.html" class="nav-link">Галерея</a>
+        <a href="services.html" class="nav-link">Послуги</a>
+        <a href="upload.html" class="nav-link">Завантажити</a>
+      </nav>
+      <div class="logo">
+        <a href="index.html" style="text-decoration: none; color: inherit;">PrintBox</a>
+      </div>
+      <div style="display: flex; gap: 1rem; align-items: center;">
+        <button class="profile-btn" aria-label="Кошик" onclick="window.location.href='cart.html'">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <circle cx="9" cy="21" r="1"/>
+            <circle cx="20" cy="21" r="1"/>
+            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+          </svg>
+        </button>
+        <button class="profile-btn" aria-label="Обліковий запис" onclick="window.location.href='profile.html'">
+          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <circle cx="12" cy="8" r="5"/>
+            <path d="M4 20c0-2.5 4-4.5 8-4.5s8 2 8 4.5"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Catalog Header -->
+  <section class="container py-12 catalog-header" style="margin-top: 80px;">
+    <div class="hero-center-group" style="max-width: 800px; background: none; box-shadow: none; border: none; padding: 0;">
+      <h1 class="section-title page-title">Каталог 3D моделей</h1>
+      <p class="page-subtitle" style="text-align: center; color: #666; margin-bottom: 2rem;">Знайдіть ідеальну модель для вашого проекту</p>
+    </div>
+  </section>
+
+  <!-- Catalog Content -->
+  <div class="catalog catalog-content">
+    <!-- Left Panel -->
+    <div class="leftPanel catalog-filters">
+      <h1>Фільтри</h1>
+      
+      <!-- Пошук -->
+      <div class="filter-section">
+        <h4>Пошук</h4>
+        <input type="text" class="filter-input" placeholder="Назва моделі...">
+      </div>
+      
+      <!-- Категорія -->
+      <div class="filter-section">
+        <h4>Категорія</h4>
+        <div class="filter-options">
+          <label>
+            <input type="checkbox" value="architecture">
+            Архітектура
+          </label>
+          <label>
+            <input type="checkbox" value="art">
+            Мистецтво
+          </label>
+          <label>
+            <input type="checkbox" value="tools">
+            Інструменти
+          </label>
+          <label>
+            <input type="checkbox" value="furniture">
+            Меблі
+          </label>
+          <label>
+            <input type="checkbox" value="gaming">
+            Ігри
+          </label>
+          <label>
+            <input type="checkbox" value="nature">
+            Природа
+          </label>
+        </div>
+      </div>
+      
+      <!-- Ціна -->
+      <div class="filter-section">
+        <h4>Ціна</h4>
+        <div class="price-inputs">
+          <input type="number" class="price-input" placeholder="Від" min="0" max="1000">
+          <span>-</span>
+          <input type="number" class="price-input" placeholder="До" min="0" max="1000">
+        </div>
+        <div class="price-slider-container">
+          <div class="price-slider">
+            <div class="price-slider-track"></div>
+            <input type="range" class="price-range" min="0" max="1000" value="0" id="min-price-slider">
+            <input type="range" class="price-range" min="0" max="1000" value="1000" id="max-price-slider">
+          </div>
+          <div class="price-values">
+            <span id="min-price-value">0</span>
+            <span id="max-price-value">1000</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Розмір -->
+      <div class="filter-section">
+        <h4>Розмір</h4>
+        <div class="filter-options">
+          <label>
+            <input type="checkbox" value="small">
+            Малий
+          </label>
+          <label>
+            <input type="checkbox" value="medium">
+            Середній
+          </label>
+          <label>
+            <input type="checkbox" value="large">
+            Великий
+          </label>
+        </div>
+      </div>
+      
+      <!-- Матеріал -->
+      <div class="filter-section">
+        <h4>Матеріал</h4>
+        <div class="filter-options">
+          <label>
+            <input type="checkbox" value="pla">
+            PLA
+          </label>
+          <label>
+            <input type="checkbox" value="abs">
+            ABS
+          </label>
+          <label>
+            <input type="checkbox" value="petg">
+            PETG
+          </label>
+          <label>
+            <input type="checkbox" value="tpu">
+            TPU
+          </label>
+        </div>
+      </div>
+      
+      <!-- Рейтинг -->
+      <div class="filter-section">
+        <h4>Рейтинг</h4>
+        <div class="rating-filter">
+          <label>
+            <input type="radio" name="rating" value="5">
+            ⭐⭐⭐⭐⭐ 5 зірок
+          </label>
+          <label>
+            <input type="radio" name="rating" value="4">
+            ⭐⭐⭐⭐ 4+ зірки
+          </label>
+          <label>
+            <input type="radio" name="rating" value="3">
+            ⭐⭐⭐ 3+ зірки
+          </label>
+        </div>
+      </div>
+      
+      <!-- Сортування -->
+      <div class="filter-section">
+        <h4>Сортування</h4>
+        <select class="filter-select">
+          <option value="popular">Популярні</option>
+          <option value="newest">Нові</option>
+          <option value="price-low">Ціна: від низької</option>
+          <option value="price-high">Ціна: від високої</option>
+          <option value="rating">За рейтингом</option>
+        </select>
+      </div>
+      
+      <button class="clear-filters-btn btn-animate">Очистити фільтри</button>
+    </div>
+
+    <!-- Right Panel -->
+    <div class="rightPanel catalog-grid">
+      <div class="card" onclick="window.location.href='model-detail.html?id=1'">
+        <div class="card-3d">🎨</div>
+        <div class="textBox">
+          <div class="text head">Низькополігонна кішка</div>
+          <span>від @catmaker • 2.3k завантажень</span>
+          <div class="text price">₴150</div>
+          <button class="print-btn btn-animate" onclick="event.stopPropagation(); addToCart(event, 'Низькополігонна кішка', '🎨')">Друкувати зараз</button>
+          
+          <div class="heart-container">
+            <input id="heart-1" class="checkbox" type="checkbox">
+            <div class="svg-container">
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-outline" viewBox="0 0 24 24">
+                <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,15,8.967a4.8,4.8,0,0,1,4.5,5.05A4.8,4.8,0,0,1,13.915,20.317Z"/>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-filled" viewBox="0 0 24 24">
+                <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,15,8.967a4.8,4.8,0,0,1,4.5,5.05A4.8,4.8,0,0,1,13.915,20.317Z"/>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-celebrate" width="100" height="100" viewBox="0 0 24 24">
+                <polygon points="10,10 20,20"></polygon>
+                <polygon points="10,50 50,10"></polygon>
+                <polygon points="20,80 80,20"></polygon>
+                <polygon points="80,80 20,80"></polygon>
+                <polygon points="90,10 10,90"></polygon>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card" onclick="window.location.href='model-detail.html?id=2'">
+        <div class="card-3d">📱</div>
+        <div class="textBox">
+          <div class="text head">Підставка для телефону</div>
+          <span>від @gadgeteer • 1.8k завантажень</span>
+          <div class="text price">₴200</div>
+          <button class="print-btn btn-animate" onclick="event.stopPropagation(); addToCart(event, 'Підставка для телефону', '📱')">Друкувати зараз</button>
+          
+          <div class="heart-container">
+            <input id="heart-2" class="checkbox" type="checkbox">
+            <div class="svg-container">
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-outline" viewBox="0 0 24 24">
+                <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,15,8.967a4.8,4.8,0,0,1,4.5,5.05A4.8,4.8,0,0,1,13.915,20.317Z"/>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-filled" viewBox="0 0 24 24">
+                <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,15,8.967a4.8,4.8,0,0,1,4.5,5.05A4.8,4.8,0,0,1,13.915,20.317Z"/>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-celebrate" width="100" height="100" viewBox="0 0 24 24">
+                <polygon points="10,10 20,20"></polygon>
+                <polygon points="10,50 50,10"></polygon>
+                <polygon points="20,80 80,20"></polygon>
+                <polygon points="80,80 20,80"></polygon>
+                <polygon points="90,10 10,90"></polygon>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card" onclick="window.location.href='model-detail.html?id=3'">
+        <div class="card-3d">🔌</div>
+        <div class="textBox">
+          <div class="text head">Органайзер для кабелів</div>
+          <span>від @tidyup • 3.1k завантажень</span>
+          <div class="text price">₴120</div>
+          <button class="print-btn btn-animate" onclick="event.stopPropagation(); addToCart(event, 'Органайзер для кабелів', '🔌')">Друкувати зараз</button>
+          
+          <div class="heart-container">
+            <input id="heart-3" class="checkbox" type="checkbox">
+            <div class="svg-container">
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-outline" viewBox="0 0 24 24">
+                <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,15,8.967a4.8,4.8,0,0,1,4.5,5.05A4.8,4.8,0,0,1,13.915,20.317Z"/>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-filled" viewBox="0 0 24 24">
+                <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,15,8.967a4.8,4.8,0,0,1,4.5,5.05A4.8,4.8,0,0,1,13.915,20.317Z"/>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-celebrate" width="100" height="100" viewBox="0 0 24 24">
+                <polygon points="10,10 20,20"></polygon>
+                <polygon points="10,50 50,10"></polygon>
+                <polygon points="20,80 80,20"></polygon>
+                <polygon points="80,80 20,80"></polygon>
+                <polygon points="90,10 10,90"></polygon>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card" onclick="window.location.href='model-detail.html?id=4'">
+        <div class="card-3d">🏠</div>
+        <div class="textBox">
+          <div class="text head">Міні будинок</div>
+          <span>від @architect • 956 завантажень</span>
+          <div class="text price">₴300</div>
+          <button class="print-btn btn-animate" onclick="event.stopPropagation(); addToCart(event, 'Міні будинок', '🏠')">Друкувати зараз</button>
+          
+          <div class="heart-container">
+            <input id="heart-4" class="checkbox" type="checkbox">
+            <div class="svg-container">
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-outline" viewBox="0 0 24 24">
+                <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,15,8.967a4.8,4.8,0,0,1,4.5,5.05A4.8,4.8,0,0,1,13.915,20.317Z"/>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-filled" viewBox="0 0 24 24">
+                <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,15,8.967a4.8,4.8,0,0,1,4.5,5.05A4.8,4.8,0,0,1,13.915,20.317Z"/>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-celebrate" width="100" height="100" viewBox="0 0 24 24">
+                <polygon points="10,10 20,20"></polygon>
+                <polygon points="10,50 50,10"></polygon>
+                <polygon points="20,80 80,20"></polygon>
+                <polygon points="80,80 20,80"></polygon>
+                <polygon points="90,10 10,90"></polygon>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card" onclick="window.location.href='model-detail.html?id=5'">
+        <div class="card-3d">🎮</div>
+        <div class="textBox">
+          <div class="text head">Ігровий контролер</div>
+          <span>від @gamer3d • 1.2k завантажень</span>
+          <div class="text price">₴250</div>
+          <button class="print-btn btn-animate" onclick="event.stopPropagation(); addToCart(event, 'Ігровий контролер', '🎮')">Друкувати зараз</button>
+          
+          <div class="heart-container">
+            <input id="heart-5" class="checkbox" type="checkbox">
+            <div class="svg-container">
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-outline" viewBox="0 0 24 24">
+                <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,15,8.967a4.8,4.8,0,0,1,4.5,5.05A4.8,4.8,0,0,1,13.915,20.317Z"/>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-filled" viewBox="0 0 24 24">
+                <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,15,8.967a4.8,4.8,0,0,1,4.5,5.05A4.8,4.8,0,0,1,13.915,20.317Z"/>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-celebrate" width="100" height="100" viewBox="0 0 24 24">
+                <polygon points="10,10 20,20"></polygon>
+                <polygon points="10,50 50,10"></polygon>
+                <polygon points="20,80 80,20"></polygon>
+                <polygon points="80,80 20,80"></polygon>
+                <polygon points="90,10 10,90"></polygon>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card" onclick="window.location.href='model-detail.html?id=6'">
+        <div class="card-3d">🌱</div>
+        <div class="textBox">
+          <div class="text head">Квітковий горщик</div>
+          <span>від @greenmaker • 2.7k завантажень</span>
+          <div class="text price">₴180</div>
+          <button class="print-btn btn-animate" onclick="event.stopPropagation(); addToCart(event, 'Квітковий горщик', '🌱')">Друкувати зараз</button>
+          
+          <div class="heart-container">
+            <input id="heart-6" class="checkbox" type="checkbox">
+            <div class="svg-container">
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-outline" viewBox="0 0 24 24">
+                <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,15,8.967a4.8,4.8,0,0,1,4.5,5.05A4.8,4.8,0,0,1,13.915,20.317Z"/>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-filled" viewBox="0 0 24 24">
+                <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,15,8.967a4.8,4.8,0,0,1,4.5,5.05A4.8,4.8,0,0,1,13.915,20.317Z"/>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-celebrate" width="100" height="100" viewBox="0 0 24 24">
+                <polygon points="10,10 20,20"></polygon>
+                <polygon points="10,50 50,10"></polygon>
+                <polygon points="20,80 80,20"></polygon>
+                <polygon points="80,80 20,80"></polygon>
+                <polygon points="90,10 10,90"></polygon>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card" onclick="window.location.href='model-detail.html?id=7'">
+        <div class="card-3d">🚗</div>
+        <div class="textBox">
+          <div class="text head">Спортивний автомобіль</div>
+          <span>від @carmaker • 1.5k завантажень</span>
+          <div class="text price">₴400</div>
+          <button class="print-btn btn-animate" onclick="event.stopPropagation(); addToCart(event, 'Спортивний автомобіль', '🚗')">Друкувати зараз</button>
+          
+          <div class="heart-container">
+            <input id="heart-7" class="checkbox" type="checkbox">
+            <div class="svg-container">
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-outline" viewBox="0 0 24 24">
+                <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,15,8.967a4.8,4.8,0,0,1,4.5,5.05A4.8,4.8,0,0,1,13.915,20.317Z"/>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-filled" viewBox="0 0 24 24">
+                <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,15,8.967a4.8,4.8,0,0,1,4.5,5.05A4.8,4.8,0,0,1,13.915,20.317Z"/>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-celebrate" width="100" height="100" viewBox="0 0 24 24">
+                <polygon points="10,10 20,20"></polygon>
+                <polygon points="10,50 50,10"></polygon>
+                <polygon points="20,80 80,20"></polygon>
+                <polygon points="80,80 20,80"></polygon>
+                <polygon points="90,10 10,90"></polygon>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="card" onclick="window.location.href='model-detail.html?id=8'">
+        <div class="card-3d">🏰</div>
+        <div class="textBox">
+          <div class="text head">Середньовічний замок</div>
+          <span>від @castlebuilder • 890 завантажень</span>
+          <div class="text price">₴350</div>
+          <button class="print-btn btn-animate" onclick="event.stopPropagation(); addToCart(event, 'Середньовічний замок', '🏰')">Друкувати зараз</button>
+          
+          <div class="heart-container">
+            <input id="heart-8" class="checkbox" type="checkbox">
+            <div class="svg-container">
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-outline" viewBox="0 0 24 24">
+                <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,15,8.967a4.8,4.8,0,0,1,4.5,5.05A4.8,4.8,0,0,1,13.915,20.317Z"/>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-filled" viewBox="0 0 24 24">
+                <path d="M17.5,1.917a6.4,6.4,0,0,0-5.5,3.3,6.4,6.4,0,0,0-5.5-3.3A6.8,6.8,0,0,0,0,8.967c0,4.547,4.786,9.513,8.8,12.88a4.974,4.974,0,0,0,6.4,0C19.214,18.48,24,13.514,24,8.967A6.8,6.8,0,0,0,17.5,1.917Zm-3.585,18.4a2.973,2.973,0,0,1-3.83,0C4.947,16.006,2,11.87,2,8.967a4.8,4.8,0,0,1,4.5-5.05A4.8,4.8,0,0,1,15,8.967a4.8,4.8,0,0,1,4.5,5.05A4.8,4.8,0,0,1,13.915,20.317Z"/>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="svg-celebrate" width="100" height="100" viewBox="0 0 24 24">
+                <polygon points="10,10 20,20"></polygon>
+                <polygon points="10,50 50,10"></polygon>
+                <polygon points="20,80 80,20"></polygon>
+                <polygon points="80,80 20,80"></polygon>
+                <polygon points="90,10 10,90"></polygon>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer-minimal py-8" style="margin-top: auto;">
+    <div class="container flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-4">
+      <div>© 2024 PrintBox - Преміум платформа 3D друку</div>
+      <div class="flex gap-6">
+        <a href="faq.html" class="footer-link">Часті питання</a>
+        <a href="contact.html" class="footer-link">Контакти</a>
+        <a href="terms.html" class="footer-link">Умови використання</a>
+        <a href="privacy.html" class="footer-link">Політика конфіденційності</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Toggle functionality for filter sections
+    const toggleButtons = document.querySelectorAll('.toggle-button');
+
+    toggleButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const currentContent = button.nextElementSibling;
+        const isOpen = button.classList.contains('open');
+
+        if (isOpen) {
+          // Згортання поточного
+          currentContent.style.height = currentContent.scrollHeight + 'px';
+          requestAnimationFrame(() => {
+            currentContent.style.height = '0px';
+          });
+          button.classList.remove('open');
+        } else {
+          // Розгортання поточного
+          currentContent.style.height = currentContent.scrollHeight + 'px';
+          button.classList.add('open');
+          currentContent.addEventListener('transitionend', function handler() {
+            if (button.classList.contains('open')) {
+              currentContent.style.height = 'auto';
+            }
+            currentContent.removeEventListener('transitionend', handler);
+          });
+        }
+      });
+    });
+
+    // Cart animation functionality
+    function addToCart(event, modelName, modelEmoji) {
+      event.preventDefault();
+      event.stopPropagation();
+      
+      // Створюємо елемент анімації
+      const animationContainer = document.createElement('div');
+      animationContainer.className = 'cart-animation';
+      
+      const flyingItem = document.createElement('div');
+      flyingItem.className = 'flying-item';
+      flyingItem.textContent = modelEmoji;
+      
+      // Отримуємо позицію кнопки
+      const button = event.target;
+      const buttonRect = button.getBoundingClientRect();
+      
+      // Отримуємо позицію кнопки кошика
+      const cartButton = document.querySelector('[aria-label="Кошик"]');
+      const cartRect = cartButton.getBoundingClientRect();
+      
+      // Встановлюємо початкову позицію
+      flyingItem.style.left = (buttonRect.left + buttonRect.width / 2 - 30) + 'px';
+      flyingItem.style.top = (buttonRect.top + buttonRect.height / 2 - 30) + 'px';
+      
+      // Додаємо елемент на сторінку
+      animationContainer.appendChild(flyingItem);
+      document.body.appendChild(animationContainer);
+      
+      // Анімуємо політ до кошика
+      setTimeout(() => {
+        flyingItem.style.left = (cartRect.left + cartRect.width / 2 - 30) + 'px';
+        flyingItem.style.top = (cartRect.top + cartRect.height / 2 - 30) + 'px';
+      }, 50);
+      
+      // Підсвічуємо кнопку кошика
+      setTimeout(() => {
+        cartButton.classList.add('cart-btn-highlight');
+      }, 500);
+      
+      // Видаляємо анімацію та перенаправляємо
+      setTimeout(() => {
+        document.body.removeChild(animationContainer);
+        cartButton.classList.remove('cart-btn-highlight');
+        window.location.href = 'cart.html';
+      }, 1000);
+    }
+
+    // Heart like functionality
+    document.querySelectorAll('.checkbox').forEach(checkbox => {
+      checkbox.addEventListener('click', function (e) {
+        e.stopPropagation();
+        console.log("Лайкнуто!");
+      });
+    });
+
+    // Функціональність слайдера ціни
+    const minPriceSlider = document.getElementById('min-price-slider');
+    const maxPriceSlider = document.getElementById('max-price-slider');
+    const minPriceValue = document.getElementById('min-price-value');
+    const maxPriceValue = document.getElementById('max-price-value');
+
+    if (minPriceSlider && maxPriceSlider) {
+      function updatePriceValues() {
+        const minVal = parseInt(minPriceSlider.value);
+        const maxVal = parseInt(maxPriceSlider.value);
+        
+        if (minVal > maxVal) {
+          if (minPriceSlider === document.activeElement) {
+            maxPriceSlider.value = minVal;
+            maxPriceValue.textContent = minVal;
+          } else {
+            minPriceSlider.value = maxVal;
+            minPriceValue.textContent = maxVal;
+          }
+        } else {
+          minPriceValue.textContent = minVal;
+          maxPriceValue.textContent = maxVal;
+        }
+      }
+
+      minPriceSlider.addEventListener('input', updatePriceValues);
+      maxPriceSlider.addEventListener('input', updatePriceValues);
+    }
+
+    // Функціональність очищення фільтрів
+    const clearFiltersBtn = document.querySelector('.clear-filters-btn');
+    if (clearFiltersBtn) {
+      clearFiltersBtn.addEventListener('click', function() {
+        // Очищаємо всі чекбокси
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+          checkbox.checked = false;
+        });
+        
+        // Очищаємо радіо кнопки
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+          radio.checked = false;
+        });
+        
+        // Скидаємо слайдер ціни
+        if (minPriceSlider && maxPriceSlider) {
+          minPriceSlider.value = 0;
+          maxPriceSlider.value = 1000;
+          minPriceValue.textContent = '0';
+          maxPriceValue.textContent = '1000';
+        }
+        
+        // Скидаємо поле пошуку
+        const searchInput = document.querySelector('.filter-input');
+        if (searchInput) {
+          searchInput.value = '';
+        }
+        
+        // Скидаємо селект сортування
+        const sortSelect = document.querySelector('.filter-select');
+        if (sortSelect) {
+          sortSelect.selectedIndex = 0;
+        }
+        
+        // Очищаємо поля ціни
+        document.querySelectorAll('.price-input').forEach(input => {
+          input.value = '';
+        });
+      });
+    }
+
+    // Додаємо анімації появи для карток
+    document.addEventListener('DOMContentLoaded', function() {
+      // Анімації видалені для більш плавного відображення
+    });
+  </script>
+</body>
+</html> 
