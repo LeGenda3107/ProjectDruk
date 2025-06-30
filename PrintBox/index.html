@@ -6,59 +6,6 @@
   <title>PrintBox - Преміум платформа 3D друку</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link href="style.css" rel="stylesheet">
-  <style>
-    /* Анімація кошика */
-    .cart-animation {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 9999;
-    }
-    
-    .flying-item {
-      position: absolute;
-      width: 60px;
-      height: 60px;
-      background: #121212;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 24px;
-      animation: flyToCart 1s ease-in-out forwards;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-    
-    @keyframes flyToCart {
-      0% {
-        transform: scale(1) rotate(0deg);
-        opacity: 1;
-      }
-      50% {
-        transform: scale(0.5) rotate(180deg);
-        opacity: 0.8;
-      }
-      100% {
-        transform: scale(0.1) rotate(360deg);
-        opacity: 0;
-      }
-    }
-    
-    /* Підсвічування кнопки кошика */
-    .cart-btn-highlight {
-      animation: cartPulse 0.5s ease-in-out;
-    }
-    
-    @keyframes cartPulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.2); }
-      100% { transform: scale(1); }
-    }
-  </style>
 </head>
 <body class="bg-milk text-gray-900">
   <!-- Fixed Minimal Header -->
