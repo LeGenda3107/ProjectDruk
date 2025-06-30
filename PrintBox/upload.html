@@ -39,33 +39,30 @@
   </header>
 
   <!-- Upload Section -->
-  <section class="container py-12 upload-section" style="margin-top: 80px;">
-    <div style="max-width: 800px; margin: 0 auto;">
+  <section class="container py-12 upload-section mt-20">
+    <div class="max-w-2xl mx-auto">
       <h1 class="section-title upload-title">Завантажити вашу модель</h1>
-      <p class="upload-subtitle" style="text-align: center; color: #666; margin-bottom: 3rem;">Поділіться своєю 3D моделлю зі спільнотою</p>
-
-      <div class="upload-form" style="background: #fff; padding: 3rem; border-radius: 20px; box-shadow: 0 8px 32px rgba(0,0,0,0.08);">
-        
+      <p class="upload-subtitle text-center text-gray-500 mb-12">Поділіться своєю 3D моделлю зі спільнотою</p>
+      <div class="upload-form bg-white p-12 rounded-2xl shadow-lg">
         <!-- File Upload Area -->
-        <div class="file-upload-area upload-form-group" style="border: 2px dashed #ddd; border-radius: 16px; padding: 3rem; text-align: center; margin-bottom: 2rem; transition: all 0.3s ease;" onmouseover="this.style.borderColor='#121212'" onmouseout="this.style.borderColor='#ddd'">
-          <div style="font-size: 3rem; margin-bottom: 1rem;">📁</div>
-          <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">Перетягніть файл сюди</h3>
-          <p style="color: #666; margin-bottom: 2rem;">або натисніть для вибору файлу</p>
-          <input type="file" accept=".stl,.obj,.3ds,.dae,.blend" style="display: none;" id="fileInput">
+        <div class="file-upload-area upload-form-group border-2 border-dashed border-gray-200 rounded-xl p-12 text-center mb-8 transition-all">
+          <div class="text-4xl mb-4">📁</div>
+          <h3 class="text-xl font-bold mb-4">Перетягніть файл сюди</h3>
+          <p class="text-gray-500 mb-8">або натисніть для вибору файлу</p>
+          <input type="file" accept=".stl,.obj,.3ds,.dae,.blend" class="hidden" id="fileInput">
           <button class="print-btn btn-animate" onclick="document.getElementById('fileInput').click()">Вибрати файл</button>
-          <p style="font-size: 0.9rem; color: #999; margin-top: 1rem;">Підтримувані формати: STL, OBJ, 3DS, DAE, BLEND (макс. 50MB)</p>
+          <p class="text-xs text-gray-400 mt-4">Підтримувані формати: STL, OBJ, 3DS, DAE, BLEND (макс. 50MB)</p>
         </div>
-
         <!-- Upload Form -->
         <form>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+          <div class="grid grid-cols-2 gap-8 mb-8">
             <div class="upload-form-group">
-              <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Назва моделі *</label>
-              <input type="text" class="form-input" placeholder="Введіть назву моделі" style="width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; background: #fff;">
+              <label class="block font-semibold mb-2">Назва моделі *</label>
+              <input type="text" class="form-input w-full p-4 border border-gray-200 rounded-lg bg-white" placeholder="Введіть назву моделі">
             </div>
             <div class="upload-form-group">
-              <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Категорія *</label>
-              <select class="form-select" style="width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; background: #fff;">
+              <label class="block font-semibold mb-2">Категорія *</label>
+              <select class="form-select w-full p-4 border border-gray-200 rounded-lg bg-white">
                 <option>Виберіть категорію</option>
                 <option>Архітектура</option>
                 <option>Мистецтво та дизайн</option>
@@ -77,42 +74,39 @@
               </select>
             </div>
           </div>
-
-          <div class="upload-form-group" style="margin-bottom: 2rem;">
-            <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Опис *</label>
-            <textarea class="form-textarea" placeholder="Опишіть вашу модель, особливості друку, матеріали..." style="width: 100%; height: 120px; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; background: #fff; resize: vertical;"></textarea>
+          <div class="upload-form-group mb-8">
+            <label class="block font-semibold mb-2">Опис *</label>
+            <textarea class="form-textarea w-full h-32 p-4 border border-gray-200 rounded-lg bg-white resize-y" placeholder="Опишіть вашу модель, особливості друку, матеріали..."></textarea>
           </div>
-
-          <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2rem;">
+          <div class="grid grid-cols-3 gap-10 mb-8">
             <div class="upload-form-group">
-              <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Теги</label>
-              <input type="text" placeholder="тег1, тег2, тег3" style="width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; background: #fff; transition: all 0.3s ease;" onfocus="this.style.borderColor='#121212'; this.style.boxShadow='0 0 0 2px rgba(18,18,18,0.1)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
-              <p style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;">Розділяйте теги комами</p>
+              <label class="block font-semibold mb-2">Теги</label>
+              <input type="text" class="w-full p-4 border border-gray-200 rounded-lg bg-white transition-all" placeholder="тег1, тег2, тег3">
+              <p class="text-xs text-gray-500 mt-2">Розділяйте теги комами</p>
             </div>
             <div class="upload-form-group">
-              <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Ліцензія</label>
-              <select style="width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; background: #fff; transition: all 0.3s ease;" onfocus="this.style.borderColor='#121212'; this.style.boxShadow='0 0 0 2px rgba(18,18,18,0.1)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
+              <label class="block font-semibold mb-2">Ліцензія</label>
+              <select class="w-full p-4 border border-gray-200 rounded-lg bg-white transition-all">
                 <option>Creative Commons</option>
                 <option>MIT License</option>
                 <option>GPL</option>
                 <option>Власницька</option>
               </select>
-              <p style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;">Виберіть тип ліцензії</p>
+              <p class="text-xs text-gray-500 mt-2">Виберіть тип ліцензії</p>
             </div>
             <div class="upload-form-group">
-              <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Ціна (грн)</label>
-              <input type="number" placeholder="0 (безкоштовно)" style="width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; background: #fff; transition: all 0.3s ease;" onfocus="this.style.borderColor='#121212'; this.style.boxShadow='0 0 0 2px rgba(18,18,18,0.1)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
-              <p style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;">0 для безкоштовних моделей</p>
+              <label class="block font-semibold mb-2">Ціна (грн)</label>
+              <input type="number" class="w-full p-4 border border-gray-200 rounded-lg bg-white transition-all" placeholder="0 (безкоштовно)">
+              <p class="text-xs text-gray-500 mt-2">0 для безкоштовних моделей</p>
             </div>
           </div>
-
           <!-- Print Settings -->
-          <div class="print-settings upload-form-group" style="background: #f8f9fa; padding: 2rem; border-radius: 16px; margin-bottom: 2rem;">
-            <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem;">Налаштування друку</h3>
-            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem;">
+          <div class="print-settings upload-form-group bg-gray-50 p-8 rounded-xl mb-8">
+            <h3 class="text-lg font-bold mb-6">Налаштування друку</h3>
+            <div class="grid grid-cols-3 gap-8">
               <div>
-                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Рекомендований матеріал</label>
-                <select style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; background: #fff;">
+                <label class="block font-semibold mb-2">Рекомендований матеріал</label>
+                <select class="w-full p-3 border border-gray-200 rounded-lg bg-white">
                   <option>PLA</option>
                   <option>ABS</option>
                   <option>PETG</option>
@@ -121,63 +115,60 @@
                 </select>
               </div>
               <div>
-                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Товщина шару (мм)</label>
-                <input type="number" step="0.1" placeholder="0.2" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; background: #fff;">
+                <label class="block font-semibold mb-2">Товщина шару (мм)</label>
+                <input type="number" step="0.1" class="w-full p-3 border border-gray-200 rounded-lg bg-white" placeholder="0.2">
               </div>
               <div>
-                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Заповнення (%)</label>
-                <input type="number" min="0" max="100" placeholder="20" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; background: #fff;">
+                <label class="block font-semibold mb-2">Заповнення (%)</label>
+                <input type="number" min="0" max="100" class="w-full p-3 border border-gray-200 rounded-lg bg-white" placeholder="20">
               </div>
             </div>
           </div>
-
           <!-- Image Upload -->
-          <div class="upload-form-group" style="margin-bottom: 2rem;">
-            <label style="display: block; font-weight: 600; margin-bottom: 1rem;">Зображення моделі (до 5 файлів)</label>
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
-              <div class="image-upload-item" style="border: 2px dashed #ddd; border-radius: 12px; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.3s ease;" onclick="document.getElementById('imageInput1').click()">
-                <div style="font-size: 2rem; margin-bottom: 0.5rem;">📷</div>
-                <p style="font-size: 0.9rem; color: #666;">Додати фото</p>
-                <input type="file" accept="image/*" style="display: none;" id="imageInput1">
+          <div class="upload-form-group mb-8">
+            <label class="block font-semibold mb-4">Зображення моделі (до 5 файлів)</label>
+            <div class="grid grid-cols-5 gap-4">
+              <div class="image-upload-item border-2 border-dashed border-gray-200 rounded-lg p-8 text-center cursor-pointer transition-all" onclick="document.getElementById('imageInput1').click()">
+                <div class="text-2xl mb-2">📷</div>
+                <p class="text-xs text-gray-500">Додати фото</p>
+                <input type="file" accept="image/*" class="hidden" id="imageInput1">
               </div>
-              <div class="image-upload-item" style="border: 2px dashed #ddd; border-radius: 12px; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.3s ease;" onclick="document.getElementById('imageInput2').click()">
-                <div style="font-size: 2rem; margin-bottom: 0.5rem;">📷</div>
-                <p style="font-size: 0.9rem; color: #666;">Додати фото</p>
-                <input type="file" accept="image/*" style="display: none;" id="imageInput2">
+              <div class="image-upload-item border-2 border-dashed border-gray-200 rounded-lg p-8 text-center cursor-pointer transition-all" onclick="document.getElementById('imageInput2').click()">
+                <div class="text-2xl mb-2">📷</div>
+                <p class="text-xs text-gray-500">Додати фото</p>
+                <input type="file" accept="image/*" class="hidden" id="imageInput2">
               </div>
-              <div class="image-upload-item" style="border: 2px dashed #ddd; border-radius: 12px; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.3s ease;" onclick="document.getElementById('imageInput3').click()">
-                <div style="font-size: 2rem; margin-bottom: 0.5rem;">📷</div>
-                <p style="font-size: 0.9rem; color: #666;">Додати фото</p>
-                <input type="file" accept="image/*" style="display: none;" id="imageInput3">
+              <div class="image-upload-item border-2 border-dashed border-gray-200 rounded-lg p-8 text-center cursor-pointer transition-all" onclick="document.getElementById('imageInput3').click()">
+                <div class="text-2xl mb-2">📷</div>
+                <p class="text-xs text-gray-500">Додати фото</p>
+                <input type="file" accept="image/*" class="hidden" id="imageInput3">
               </div>
-              <div class="image-upload-item" style="border: 2px dashed #ddd; border-radius: 12px; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.3s ease;" onclick="document.getElementById('imageInput4').click()">
-                <div style="font-size: 2rem; margin-bottom: 0.5rem;">📷</div>
-                <p style="font-size: 0.9rem; color: #666;">Додати фото</p>
-                <input type="file" accept="image/*" style="display: none;" id="imageInput4">
+              <div class="image-upload-item border-2 border-dashed border-gray-200 rounded-lg p-8 text-center cursor-pointer transition-all" onclick="document.getElementById('imageInput4').click()">
+                <div class="text-2xl mb-2">📷</div>
+                <p class="text-xs text-gray-500">Додати фото</p>
+                <input type="file" accept="image/*" class="hidden" id="imageInput4">
               </div>
-              <div class="image-upload-item" style="border: 2px dashed #ddd; border-radius: 12px; padding: 2rem; text-align: center; cursor: pointer; transition: all 0.3s ease;" onclick="document.getElementById('imageInput5').click()">
-                <div style="font-size: 2rem; margin-bottom: 0.5rem;">📷</div>
-                <p style="font-size: 0.9rem; color: #666;">Додати фото</p>
-                <input type="file" accept="image/*" style="display: none;" id="imageInput5">
+              <div class="image-upload-item border-2 border-dashed border-gray-200 rounded-lg p-8 text-center cursor-pointer transition-all" onclick="document.getElementById('imageInput5').click()">
+                <div class="text-2xl mb-2">📷</div>
+                <p class="text-xs text-gray-500">Додати фото</p>
+                <input type="file" accept="image/*" class="hidden" id="imageInput5">
               </div>
             </div>
           </div>
-
           <!-- Terms -->
-          <div class="terms-section upload-form-group" style="background: #f8f9fa; padding: 2rem; border-radius: 16px; margin-bottom: 2rem;">
-            <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem;">Умови завантаження</h3>
-            <div style="display: flex; gap: 1rem; align-items: flex-start;">
-              <input type="checkbox" id="terms" style="margin-top: 0.2rem;">
-              <label for="terms" style="font-size: 0.9rem; line-height: 1.5;">
-                Я погоджуюся з <a href="#" style="color: #121212; text-decoration: underline;">умовами використання</a> та <a href="#" style="color: #121212; text-decoration: underline;">політикою конфіденційності</a>. Я підтверджую, що маю права на розповсюдження цієї моделі та вона не порушує авторські права третіх осіб.
+          <div class="terms-section upload-form-group bg-gray-50 p-8 rounded-xl mb-8">
+            <h3 class="text-lg font-bold mb-4">Умови завантаження</h3>
+            <div class="flex gap-4 items-start">
+              <input type="checkbox" id="terms" class="mt-1">
+              <label for="terms" class="text-xs leading-5">
+                Я погоджуюся з <a href="#" class="text-dark underline">умовами використання</a> та <a href="#" class="text-dark underline">політикою конфіденційності</a>. Я підтверджую, що маю права на розповсюдження цієї моделі та вона не порушує авторські права третіх осіб.
               </label>
             </div>
           </div>
-
           <!-- Submit Buttons -->
-          <div class="submit-buttons" style="display: flex; gap: 1rem; justify-content: center;">
-            <button type="button" class="print-btn btn-animate" style="background: #666; padding: 1rem 2rem;">Зберегти чернетку</button>
-            <button type="submit" class="print-btn btn-animate" style="padding: 1rem 2rem;">Опублікувати модель</button>
+          <div class="submit-buttons flex gap-4 justify-center">
+            <button type="button" class="print-btn btn-animate bg-gray-500 text-white py-3 px-8 rounded-lg">Зберегти чернетку</button>
+            <button type="submit" class="print-btn btn-animate py-3 px-8 rounded-lg">Опублікувати модель</button>
           </div>
         </form>
       </div>
