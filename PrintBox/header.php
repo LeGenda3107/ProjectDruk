@@ -46,6 +46,3 @@ if (!isset($page_title)) $page_title = 'PrintBox';
       </div>
     </div>
   </header>
-
-</body>
-</html> 
