@@ -152,11 +152,11 @@
           <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
             <div class="upload-form-group">
               <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Назва моделі *</label>
-              <input type="text" class="form-input" placeholder="Введіть назву моделі" style="width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; background: #fff;">
+              <input type="text" class="form-input" placeholder="Введіть назву моделі" style="width: 100%; padding: 1rem; box-sizing: border-box; border: 1px solid #ddd; border-radius: 8px; background: #fff;">
             </div>
             <div class="upload-form-group">
               <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Категорія *</label>
-              <select class="form-select" style="width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; background: #fff;">
+              <select class="form-select" style="width: 100%; padding: 1rem; box-sizing: border-box; border: 1px solid #ddd; border-radius: 8px; background: #fff;">
                 <option>Виберіть категорію</option>
                 <option>Архітектура</option>
                 <option>Мистецтво та дизайн</option>
@@ -171,18 +171,18 @@
 
           <div class="upload-form-group" style="margin-bottom: 2rem;">
             <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Опис *</label>
-            <textarea class="form-textarea" placeholder="Опишіть вашу модель, особливості друку, матеріали..." style="width: 100%; height: 120px; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; background: #fff; resize: vertical;"></textarea>
+            <textarea class="form-textarea" placeholder="Опишіть вашу модель, особливості друку, матеріали..." style="width: 100%; height: 120px; padding: 1rem; box-sizing: border-box; border: 1px solid #ddd; border-radius: 8px; background: #fff; resize: vertical;"></textarea>
           </div>
 
           <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.5rem; margin-bottom: 2rem;">
             <div class="upload-form-group">
               <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Теги</label>
-              <input type="text" placeholder="тег1, тег2, тег3" style="width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; background: #fff; transition: all 0.3s ease;" onfocus="this.style.borderColor='#121212'; this.style.boxShadow='0 0 0 2px rgba(18,18,18,0.1)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
+              <input type="text" placeholder="тег1, тег2, тег3" style="width: 100%; padding: 1rem; box-sizing: border-box; border: 1px solid #ddd; border-radius: 8px; background: #fff; transition: all 0.3s ease;" onfocus="this.style.borderColor='#121212'; this.style.boxShadow='0 0 0 2px rgba(18,18,18,0.1)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
               <p style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;">Розділяйте теги комами</p>
             </div>
             <div class="upload-form-group">
               <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Ліцензія</label>
-              <select style="width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; background: #fff; transition: all 0.3s ease;" onfocus="this.style.borderColor='#121212'; this.style.boxShadow='0 0 0 2px rgba(18,18,18,0.1)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
+              <select style="width: 100%; padding: 1rem; box-sizing: border-box; border: 1px solid #ddd; border-radius: 8px; background: #fff; transition: all 0.3s ease;" onfocus="this.style.borderColor='#121212'; this.style.boxShadow='0 0 0 2px rgba(18,18,18,0.1)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
                 <option>Creative Commons</option>
                 <option>MIT License</option>
                 <option>GPL</option>
@@ -192,7 +192,7 @@
             </div>
             <div class="upload-form-group">
               <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Ціна (грн)</label>
-              <input type="number" placeholder="0 (безкоштовно)" style="width: 100%; padding: 1rem; border: 1px solid #ddd; border-radius: 8px; background: #fff; transition: all 0.3s ease;" onfocus="this.style.borderColor='#121212'; this.style.boxShadow='0 0 0 2px rgba(18,18,18,0.1)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
+              <input type="number" placeholder="0 (безкоштовно)" style="width: 100%; padding: 1rem; box-sizing: border-box; border: 1px solid #ddd; border-radius: 8px; background: #fff; transition: all 0.3s ease;" onfocus="this.style.borderColor='#121212'; this.style.boxShadow='0 0 0 2px rgba(18,18,18,0.1)'" onblur="this.style.borderColor='#ddd'; this.style.boxShadow='none'">
               <p style="font-size: 0.8rem; color: #666; margin-top: 0.5rem;">0 для безкоштовних моделей</p>
             </div>
           </div>
@@ -202,8 +202,8 @@
             <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem;">Налаштування друку</h3>
             <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem;">
               <div>
-                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Рекомендований матеріал</label>
-                <select style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; background: #fff;">
+                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Матеріал</label>
+                <select style="width: 100%; padding: 0.8rem; box-sizing: border-box; border: 1px solid #ddd; border-radius: 8px; background: #fff;">
                   <option>PLA</option>
                   <option>ABS</option>
                   <option>PETG</option>
@@ -213,11 +213,11 @@
               </div>
               <div>
                 <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Товщина шару (мм)</label>
-                <input type="number" step="0.1" placeholder="0.2" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; background: #fff;">
+                <input type="number" step="0.1" placeholder="0.2" style="width: 100%; padding: 0.8rem; box-sizing: border-box; border: 1px solid #ddd; border-radius: 8px; background: #fff;">
               </div>
               <div>
                 <label style="display: block; font-weight: 600; margin-bottom: 0.5rem;">Заповнення (%)</label>
-                <input type="number" min="0" max="100" placeholder="20" style="width: 100%; padding: 0.8rem; border: 1px solid #ddd; border-radius: 8px; background: #fff;">
+                <input type="number" min="0" max="100" placeholder="20" style="width: 100%; padding: 0.8rem; box-sizing: border-box; border: 1px solid #ddd; border-radius: 8px; background: #fff;">
               </div>
             </div>
           </div>
