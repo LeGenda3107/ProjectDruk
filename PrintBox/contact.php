@@ -1,42 +1,4 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Контакти - PrintBox</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link href="style.css" rel="stylesheet">
-</head>
-<body class="bg-milk text-gray-900">
-  <!-- Fixed Minimal Header -->
-  <header class="header-minimal fixed-header">
-    <div class="container header-bar">
-      <nav class="header-nav">
-        <a href="catalog.php" class="nav-link">Каталог</a>
-        <a href="gallery.php" class="nav-link">Галерея</a>
-        <a href="services.php" class="nav-link">Послуги</a>
-        <a href="upload.php" class="nav-link">Завантажити</a>
-      </nav>
-      <div class="logo">
-        <a href="index.php" style="text-decoration: none; color: inherit;">PrintBox</a>
-      </div>
-      <div style="display: flex; gap: 1rem; align-items: center;">
-        <button class="profile-btn" aria-label="Кошик" onclick="window.location.href='cart.php'">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <circle cx="9" cy="21" r="1"/>
-            <circle cx="20" cy="21" r="1"/>
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-          </svg>
-        </button>
-        <button class="profile-btn" aria-label="Обліковий запис" onclick="window.location.href='profile.php'">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <circle cx="12" cy="8" r="5"/>
-            <path d="M4 20c0-2.5 4-4.5 8-4.5s8 2 8 4.5"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </header>
+<?php $page_title = 'Контакти - PrintBox'; include 'header.php'; ?>
 
   <!-- Contact Header -->
   <section class="container py-12 contact-header" style="margin-top: 80px;">
@@ -172,22 +134,9 @@
       </div>
       
       <div style="text-align: center; margin-top: 2rem;">
-        <button class="print-btn btn-animate" onclick="window.location.href='faq.html'">Переглянути всі питання</button>
+        <button class="print-btn btn-animate" onclick="window.location.href='faq.php'">Переглянути всі питання</button>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer-minimal py-8">
-    <div class="container flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-4">
-      <div>© 2024 PrintBox - Преміум платформа 3D друку</div>
-      <div class="flex gap-6">
-        <a href="faq.php" class="footer-link">Часті питання</a>
-        <a href="contact.php" class="footer-link">Контакти</a>
-        <a href="terms.php" class="footer-link">Умови використання</a>
-        <a href="privacy.php" class="footer-link">Політика конфіденційності</a>
-      </div>
-    </div>
-  </footer>
-</body>
-</html> 
+<?php include 'footer.php'; ?> 

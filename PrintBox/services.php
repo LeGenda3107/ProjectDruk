@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Послуги 3D друку - PrintBox</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link href="style.css" rel="stylesheet">
-</head>
+<?php $page_title = 'Послуги 3D друку - PrintBox'; include 'header.php'; ?>
+
 <body class="bg-milk text-gray-900">
   <!-- Fixed Minimal Header -->
   <header class="header-minimal fixed-header">
@@ -196,17 +189,5 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="footer-minimal py-8">
-    <div class="container flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-4">
-      <div>© 2024 PrintBox - Преміум платформа 3D друку</div>
-      <div class="flex gap-6">
-        <a href="faq.php" class="footer-link">Часті питання</a>
-        <a href="contact.php" class="footer-link">Контакти</a>
-        <a href="terms.php" class="footer-link">Умови використання</a>
-        <a href="privacy.php" class="footer-link">Політика конфіденційності</a>
-      </div>
-    </div>
-  </footer>
-</body>
-</html> 
+
+<?php include 'footer.php'; ?> 

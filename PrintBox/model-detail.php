@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html lang="uk">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Деталі моделі - PrintBox</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  <link href="style.css" rel="stylesheet">
+<?php $page_title = 'Деталі моделі - PrintBox'; include 'header.php'; ?>
+
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
     /* Стилі для сторінки товару з PHP версії */
@@ -420,38 +414,7 @@
       100% { transform: scale(1); }
     }
   </style>
-</head>
 <body class="bg-milk text-gray-900">
-  <!-- Fixed Minimal Header -->
-  <header class="header-minimal fixed-header">
-    <div class="container header-bar">
-      <nav class="header-nav">
-        <a href="catalog.html" class="nav-link">Каталог</a>
-        <a href="gallery.html" class="nav-link">Галерея</a>
-        <a href="services.html" class="nav-link">Послуги</a>
-        <a href="upload.html" class="nav-link">Завантажити</a>
-      </nav>
-      <div class="logo">
-        <a href="index.html" style="text-decoration: none; color: inherit;">PrintBox</a>
-      </div>
-      <div style="display: flex; gap: 1rem; align-items: center;">
-        <button class="profile-btn" aria-label="Кошик" onclick="window.location.href='cart.html'">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <circle cx="9" cy="21" r="1"/>
-            <circle cx="20" cy="21" r="1"/>
-            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
-          </svg>
-        </button>
-        <button class="profile-btn" aria-label="Обліковий запис" onclick="window.location.href='profile.html'">
-          <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-            <circle cx="12" cy="8" r="5"/>
-            <path d="M4 20c0-2.5 4-4.5 8-4.5s8 2 8 4.5"/>
-          </svg>
-        </button>
-      </div>
-    </div>
-  </header>
-
   <!-- Model Detail Section -->
   <section class="commodity model-detail-content">
     <article class="commodityInfo model-info">
@@ -682,4 +645,4 @@
     });
   </script>
 </body>
-</html> 
+</html>
