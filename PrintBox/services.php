@@ -12,23 +12,23 @@
   <header class="header-minimal fixed-header">
     <div class="container header-bar">
       <nav class="header-nav">
-        <a href="catalog.html" class="nav-link">Каталог</a>
-        <a href="gallery.html" class="nav-link">Галерея</a>
-        <a href="services.html" class="nav-link">Послуги</a>
-        <a href="upload.html" class="nav-link">Завантажити</a>
+        <a href="catalog.php" class="nav-link">Каталог</a>
+        <a href="gallery.php" class="nav-link">Галерея</a>
+        <a href="services.php" class="nav-link">Послуги</a>
+        <a href="upload.php" class="nav-link">Завантажити</a>
       </nav>
       <div class="logo">
-        <a href="index.html" style="text-decoration: none; color: inherit;">PrintBox</a>
+        <a href="index.php" style="text-decoration: none; color: inherit;">PrintBox</a>
       </div>
       <div style="display: flex; gap: 1rem; align-items: center;">
-        <button class="profile-btn" aria-label="Кошик" onclick="window.location.href='cart.html'">
+        <button class="profile-btn" aria-label="Кошик" onclick="window.location.href='cart.php'">
           <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
             <circle cx="9" cy="21" r="1"/>
             <circle cx="20" cy="21" r="1"/>
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
           </svg>
         </button>
-        <button class="profile-btn" aria-label="Обліковий запис" onclick="window.location.href='profile.html'">
+        <button class="profile-btn" aria-label="Обліковий запис" onclick="window.location.href='profile.php'">
           <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
             <circle cx="12" cy="8" r="5"/>
             <path d="M4 20c0-2.5 4-4.5 8-4.5s8 2 8 4.5"/>
@@ -85,7 +85,7 @@
           <li style="padding: 0.5rem 0;">✅ Базова підтримка</li>
         </ul>
         
-        <button class="print-btn btn-animate" style="width: 100%;" onclick="window.location.href='cart.html'">Замовити</button>
+        <button class="print-btn btn-animate" style="width: 100%;" onclick="window.location.href='cart.php'">Замовити</button>
       </div>
 
       <!-- Standard Plan -->
@@ -103,7 +103,7 @@
           <li style="padding: 0.5rem 0;">✅ Постобробка включена</li>
         </ul>
         
-        <button class="upload-btn btn-animate" style="width: 100%;" onclick="window.location.href='cart.html'">Замовити</button>
+        <button class="upload-btn btn-animate" style="width: 100%;" onclick="window.location.href='cart.php'">Замовити</button>
       </div>
 
       <!-- Premium Plan -->
@@ -121,7 +121,7 @@
           <li style="padding: 0.5rem 0;">✅ Консультація експерта</li>
         </ul>
         
-        <button class="print-btn btn-animate" style="width: 100%;" onclick="window.location.href='cart.html'">Замовити</button>
+        <button class="print-btn btn-animate" style="width: 100%;" onclick="window.location.href='cart.php'">Замовити</button>
       </div>
     </div>
   </section>
@@ -192,7 +192,7 @@
     <div style="background: linear-gradient(135deg, #121212 0%, #333333 100%); padding: 3rem; border-radius: 20px; text-align: center; color: #fff; margin-top: 3rem;">
       <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">Готові почати?</h2>
       <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9;">Замовте друк прямо зараз та отримайте знижку 10% на перше замовлення</p>
-      <button class="upload-btn btn-animate" onclick="window.location.href='cart.html'">Замовити друк</button>
+      <button class="upload-btn btn-animate" onclick="window.location.href='cart.php'">Замовити друк</button>
     </div>
   </section>
 
@@ -201,10 +201,10 @@
     <div class="container flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-4">
       <div>© 2024 PrintBox - Преміум платформа 3D друку</div>
       <div class="flex gap-6">
-        <a href="faq.html" class="footer-link">Часті питання</a>
-        <a href="contact.html" class="footer-link">Контакти</a>
-        <a href="terms.html" class="footer-link">Умови використання</a>
-        <a href="privacy.html" class="footer-link">Політика конфіденційності</a>
+        <a href="faq.php" class="footer-link">Часті питання</a>
+        <a href="contact.php" class="footer-link">Контакти</a>
+        <a href="terms.php" class="footer-link">Умови використання</a>
+        <a href="privacy.php" class="footer-link">Політика конфіденційності</a>
       </div>
     </div>
   </footer>

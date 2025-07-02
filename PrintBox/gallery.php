@@ -13,23 +13,23 @@
   <header class="header-minimal fixed-header">
     <div class="container header-bar">
       <nav class="header-nav">
-        <a href="catalog.html" class="nav-link">Каталог</a>
-        <a href="gallery.html" class="nav-link">Галерея</a>
-        <a href="services.html" class="nav-link">Послуги</a>
-        <a href="upload.html" class="nav-link">Завантажити</a>
+        <a href="catalog.php" class="nav-link">Каталог</a>
+        <a href="gallery.php" class="nav-link">Галерея</a>
+        <a href="services.php" class="nav-link">Послуги</a>
+        <a href="upload.php" class="nav-link">Завантажити</a>
       </nav>
       <div class="logo">
-        <a href="index.html" style="text-decoration: none; color: inherit;">PrintBox</a>
+        <a href="index.php" style="text-decoration: none; color: inherit;">PrintBox</a>
       </div>
       <div style="display: flex; gap: 1rem; align-items: center;">
-        <button class="profile-btn" aria-label="Кошик" onclick="window.location.href='cart.html'">
+        <button class="profile-btn" aria-label="Кошик" onclick="window.location.href='cart.php'">
           <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
             <circle cx="9" cy="21" r="1"/>
             <circle cx="20" cy="21" r="1"/>
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
           </svg>
         </button>
-        <button class="profile-btn" aria-label="Обліковий запис" onclick="window.location.href='profile.html'">
+        <button class="profile-btn" aria-label="Обліковий запис" onclick="window.location.href='profile.php'">
           <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
             <circle cx="12" cy="8" r="5"/>
             <path d="M4 20c0-2.5 4-4.5 8-4.5s8 2 8 4.5"/>
@@ -59,17 +59,17 @@
   <!-- Gallery Grid -->
   <section class="container py-12 gallery-grid">
     <div class="model-grid-modern">
-      <div class="model-card" onclick="window.location.href='gallery-detail.html?id=1'">
+      <div class="model-card" onclick="window.location.href='gallery-detail.php?id=1'">
         <div class="model-card-3d">🏠 Надрукований будинок</div>
         <div class="model-card-info">
           <div class="model-title">Мініатюрний будинок</div>
           <div class="model-meta">від <span class="model-creator">@architect</span> • PLA, 0.2mm</div>
           <div style="display: flex; gap: 0.5rem; margin-top: 0.5rem;">
-            <span style="background: #f0f0f0; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">🏆 Переможець</span>
+            <span style="background: #f0f0f0; padding: 0.2rem 0.5rem; border-radius: 4px; font-size: 0.8rem;">�� Переможець</span>
           </div>
         </div>
       </div>
-      <div class="model-card" onclick="window.location.href='gallery-detail.html?id=2'">
+      <div class="model-card" onclick="window.location.href='gallery-detail.php?id=2'">
         <div class="model-card-3d">🎨 Скульптура</div>
         <div class="model-card-info">
           <div class="model-title">Абстрактна скульптура</div>
@@ -79,7 +79,7 @@
           </div>
         </div>
       </div>
-      <div class="model-card" onclick="window.location.href='gallery-detail.html?id=3'">
+      <div class="model-card" onclick="window.location.href='gallery-detail.php?id=3'">
         <div class="model-card-3d">🔧 Деталь механізму</div>
         <div class="model-card-info">
           <div class="model-title">Шестерня</div>
@@ -89,7 +89,7 @@
           </div>
         </div>
       </div>
-      <div class="model-card" onclick="window.location.href='gallery-detail.html?id=4'">
+      <div class="model-card" onclick="window.location.href='gallery-detail.php?id=4'">
         <div class="model-card-3d">📱 Підставка</div>
         <div class="model-card-info">
           <div class="model-title">Підставка для телефону</div>
@@ -99,7 +99,7 @@
           </div>
         </div>
       </div>
-      <div class="model-card" onclick="window.location.href='gallery-detail.html?id=5'">
+      <div class="model-card" onclick="window.location.href='gallery-detail.php?id=5'">
         <div class="model-card-3d">🌱 Горщик</div>
         <div class="model-card-info">
           <div class="model-title">Квітковий горщик</div>
@@ -109,7 +109,7 @@
           </div>
         </div>
       </div>
-      <div class="model-card" onclick="window.location.href='gallery-detail.html?id=6'">
+      <div class="model-card" onclick="window.location.href='gallery-detail.php?id=6'">
         <div class="model-card-3d">🎮 Контролер</div>
         <div class="model-card-info">
           <div class="model-title">Ігровий контролер</div>
@@ -119,7 +119,7 @@
           </div>
         </div>
       </div>
-      <div class="model-card" onclick="window.location.href='gallery-detail.html?id=7'">
+      <div class="model-card" onclick="window.location.href='gallery-detail.php?id=7'">
         <div class="model-card-3d">🚗 Автомобіль</div>
         <div class="model-card-info">
           <div class="model-title">Спортивний автомобіль</div>
@@ -129,7 +129,7 @@
           </div>
         </div>
       </div>
-      <div class="model-card" onclick="window.location.href='gallery-detail.html?id=8'">
+      <div class="model-card" onclick="window.location.href='gallery-detail.php?id=8'">
         <div class="model-card-3d">🏰 Замок</div>
         <div class="model-card-info">
           <div class="model-title">Середньовічний замок</div>
@@ -156,7 +156,7 @@
     <div style="background: linear-gradient(135deg, #121212 0%, #333333 100%); padding: 3rem; border-radius: 20px; text-align: center; color: #fff;">
       <h2 style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">Поділіться своєю роботою</h2>
       <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.9;">Покажіть світу, що ви можете створити на 3D принтері</p>
-      <button class="upload-btn" onclick="window.location.href='upload.html'">Завантажити роботу</button>
+      <button class="upload-btn" onclick="window.location.href='upload.php'">Завантажити роботу</button>
     </div>
   </section>
 
@@ -165,10 +165,10 @@
     <div class="container flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-4">
       <div>© 2024 PrintBox - Преміум платформа 3D друку</div>
       <div class="flex gap-6">
-        <a href="faq.html" class="footer-link">Часті питання</a>
-        <a href="contact.html" class="footer-link">Контакти</a>
-        <a href="terms.html" class="footer-link">Умови використання</a>
-        <a href="privacy.html" class="footer-link">Політика конфіденційності</a>
+        <a href="faq.php" class="footer-link">Часті питання</a>
+        <a href="contact.php" class="footer-link">Контакти</a>
+        <a href="terms.php" class="footer-link">Умови використання</a>
+        <a href="privacy.php" class="footer-link">Політика конфіденційності</a>
       </div>
     </div>
   </footer>

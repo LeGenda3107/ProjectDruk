@@ -65,23 +65,23 @@
   <header class="header-minimal fixed-header">
     <div class="container header-bar">
       <nav class="header-nav">
-        <a href="catalog.html" class="nav-link">Каталог</a>
-        <a href="gallery.html" class="nav-link">Галерея</a>
-        <a href="services.html" class="nav-link">Послуги</a>
-        <a href="upload.html" class="nav-link">Завантажити</a>
+        <a href="catalog.php" class="nav-link">Каталог</a>
+        <a href="gallery.php" class="nav-link">Галерея</a>
+        <a href="services.php" class="nav-link">Послуги</a>
+        <a href="upload.php" class="nav-link">Завантажити</a>
       </nav>
       <div class="logo">
-        <a href="index.html" style="text-decoration: none; color: inherit;">PrintBox</a>
+        <a href="index.php" style="text-decoration: none; color: inherit;">PrintBox</a>
       </div>
       <div style="display: flex; gap: 1rem; align-items: center;">
-        <button class="profile-btn" aria-label="Кошик" onclick="window.location.href='cart.html'">
+        <button class="profile-btn" aria-label="Кошик" onclick="window.location.href='cart.php'">
           <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
             <circle cx="9" cy="21" r="1"/>
             <circle cx="20" cy="21" r="1"/>
             <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
           </svg>
         </button>
-        <button class="profile-btn" aria-label="Обліковий запис" onclick="window.location.href='profile.html'">
+        <button class="profile-btn" aria-label="Обліковий запис" onclick="window.location.href='profile.php'">
           <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
             <circle cx="12" cy="8" r="5"/>
             <path d="M4 20c0-2.5 4-4.5 8-4.5s8 2 8 4.5"/>
@@ -105,7 +105,7 @@
           </svg>
         </button>
       </form>
-      <button class="upload-btn btn-animate" onclick="window.location.href='upload.html'">Завантажити вашу модель</button>
+      <button class="upload-btn btn-animate" onclick="window.location.href='upload.php'">Завантажити вашу модель</button>
     </div>
   </section>
 
@@ -113,7 +113,7 @@
   <section class="container py-12 featured-models">
     <h2 class="section-title">Популярні моделі</h2>
     <div class="model-grid-modern">
-      <div class="model-card" onclick="window.location.href='model-detail.html?id=1'">
+      <div class="model-card" onclick="window.location.href='model-detail.php?id=1'">
         <div class="model-card-3d">🎨 Низькополігонна кішка</div>
         <div class="model-card-info">
           <div class="model-title">Низькополігонна кішка</div>
@@ -121,7 +121,7 @@
           <button class="print-btn btn-animate" onclick="event.stopPropagation(); addToCart(event, 'Низькополігонна кішка', '🎨')">Друкувати зараз</button>
         </div>
       </div>
-      <div class="model-card" onclick="window.location.href='model-detail.html?id=2'">
+      <div class="model-card" onclick="window.location.href='model-detail.php?id=2'">
         <div class="model-card-3d">📱 Підставка для телефону</div>
         <div class="model-card-info">
           <div class="model-title">Підставка для телефону</div>
@@ -129,7 +129,7 @@
           <button class="print-btn btn-animate" onclick="event.stopPropagation(); addToCart(event, 'Підставка для телефону', '📱')">Друкувати зараз</button>
         </div>
       </div>
-      <div class="model-card" onclick="window.location.href='model-detail.html?id=3'">
+      <div class="model-card" onclick="window.location.href='model-detail.php?id=3'">
         <div class="model-card-3d">🔌 Органайзер для кабелів</div>
         <div class="model-card-info">
           <div class="model-title">Органайзер для кабелів</div>
@@ -137,7 +137,7 @@
           <button class="print-btn btn-animate" onclick="event.stopPropagation(); addToCart(event, 'Органайзер для кабелів', '🔌')">Друкувати зараз</button>
         </div>
       </div>
-      <div class="model-card" onclick="window.location.href='model-detail.html?id=4'">
+      <div class="model-card" onclick="window.location.href='model-detail.php?id=4'">
         <div class="model-card-3d">🏠 Міні будинок</div>
         <div class="model-card-info">
           <div class="model-title">Міні будинок</div>
@@ -145,7 +145,7 @@
           <button class="print-btn btn-animate" onclick="event.stopPropagation(); addToCart(event, 'Міні будинок', '🏠')">Друкувати зараз</button>
         </div>
       </div>
-      <div class="model-card" onclick="window.location.href='model-detail.html?id=5'">
+      <div class="model-card" onclick="window.location.href='model-detail.php?id=5'">
         <div class="model-card-3d">🎮 Ігровий контролер</div>
         <div class="model-card-info">
           <div class="model-title">Ігровий контролер</div>
@@ -153,7 +153,7 @@
           <button class="print-btn btn-animate" onclick="event.stopPropagation(); addToCart(event, 'Ігровий контролер', '🎮')">Друкувати зараз</button>
         </div>
       </div>
-      <div class="model-card" onclick="window.location.href='model-detail.html?id=6'">
+      <div class="model-card" onclick="window.location.href='model-detail.php?id=6'">
         <div class="model-card-3d">🌱 Квітковий горщик</div>
         <div class="model-card-info">
           <div class="model-title">Квітковий горщик</div>
@@ -168,28 +168,28 @@
   <section class="container py-12 categories-section">
     <h2 class="section-title">Популярні категорії</h2>
     <div class="model-grid-modern">
-      <div class="model-card" onclick="window.location.href='catalog.html?category=architecture'">
+      <div class="model-card" onclick="window.location.href='catalog.php?category=architecture'">
         <div class="model-card-3d">🏠 Архітектура</div>
         <div class="model-card-info">
           <div class="model-title">Архітектура</div>
           <div class="model-meta">Будинки, споруди та конструкції</div>
-          <button class="print-btn btn-animate" onclick="event.stopPropagation(); window.location.href='catalog.html?category=architecture'">Переглянути</button>
+          <button class="print-btn btn-animate" onclick="event.stopPropagation(); window.location.href='catalog.php?category=architecture'">Переглянути</button>
         </div>
       </div>
-      <div class="model-card" onclick="window.location.href='catalog.html?category=art'">
+      <div class="model-card" onclick="window.location.href='catalog.php?category=art'">
         <div class="model-card-3d">🎨 Мистецтво та дизайн</div>
         <div class="model-card-info">
           <div class="model-title">Мистецтво та дизайн</div>
           <div class="model-meta">Скульптури та декоративні елементи</div>
-          <button class="print-btn btn-animate" onclick="event.stopPropagation(); window.location.href='catalog.html?category=art'">Переглянути</button>
+          <button class="print-btn btn-animate" onclick="event.stopPropagation(); window.location.href='catalog.php?category=art'">Переглянути</button>
         </div>
       </div>
-      <div class="model-card" onclick="window.location.href='catalog.html?category=tools'">
+      <div class="model-card" onclick="window.location.href='catalog.php?category=tools'">
         <div class="model-card-3d">🔧 Інструменти та деталі</div>
         <div class="model-card-info">
           <div class="model-title">Інструменти та деталі</div>
           <div class="model-meta">Функціональні друки та ремонт</div>
-          <button class="print-btn btn-animate" onclick="event.stopPropagation(); window.location.href='catalog.html?category=tools'">Переглянути</button>
+          <button class="print-btn btn-animate" onclick="event.stopPropagation(); window.location.href='catalog.php?category=tools'">Переглянути</button>
         </div>
       </div>
     </div>
@@ -200,10 +200,10 @@
     <div class="container flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 gap-4">
       <div>© 2024 PrintBox - Преміум платформа 3D друку</div>
       <div class="flex gap-6">
-        <a href="faq.html" class="footer-link">Часті питання</a>
-        <a href="contact.html" class="footer-link">Контакти</a>
-        <a href="terms.html" class="footer-link">Умови використання</a>
-        <a href="privacy.html" class="footer-link">Політика конфіденційності</a>
+        <a href="faq.php" class="footer-link">Часті питання</a>
+        <a href="contact.php" class="footer-link">Контакти</a>
+        <a href="terms.php" class="footer-link">Умови використання</a>
+        <a href="privacy.php" class="footer-link">Політика конфіденційності</a>
       </div>
     </div>
   </footer>
@@ -253,7 +253,7 @@
       setTimeout(() => {
         document.body.removeChild(animationContainer);
         cartButton.classList.remove('cart-btn-highlight');
-        window.location.href = 'cart.html';
+        window.location.href = 'cart.php';
       }, 1000);
     }
 
